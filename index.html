@@ -13,6 +13,7 @@
             --border-color: #dcdcdc;
             --accent-color: #003366; /* Blau fosc clàssic */
             --accent-hover: #b30000; /* Vermell diari per actius/hover */
+            --progress-blue: #0056b3; /* Blau de la barra */
             --font-serif: 'Georgia', 'Times New Roman', serif;
             --font-sans: 'Arial', 'Helvetica', sans-serif;
         }
@@ -26,22 +27,22 @@
             line-height: 1.6;
         }
 
-        /* Barra de progrés de lectura */
+        /* Barra de progrés de lectura vertical a la dreta */
         #progress-container {
             position: fixed;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            background-color: transparent;
+            right: 0;
+            width: 6px;
+            height: 100vh;
+            background-color: #e0e0e0;
             z-index: 1000;
         }
 
         #progress-bar {
-            height: 100%;
-            width: 0%;
-            background-color: var(--accent-hover);
-            transition: width 0.1s ease-out;
+            width: 100%;
+            height: 0%;
+            background-color: var(--progress-blue);
+            transition: height 0.1s ease-out;
         }
 
         /* Capçalera del Diari (Masthead) */
@@ -51,7 +52,6 @@
             border-bottom: 4px solid var(--text-main);
             border-top: 12px solid var(--accent-color);
             margin-bottom: 30px;
-            margin-top: 6px; /* Espai per la barra de progrés */
         }
 
         header h1 {
@@ -80,6 +80,7 @@
             display: flex;
             padding: 0 20px;
             gap: 40px;
+            min-height: calc(100vh - 350px); /* Assegura que el footer quedi a baix */
         }
 
         /* Menú Lateral Esquerre */
@@ -128,6 +129,7 @@
         main.content {
             flex: 1;
             max-width: 800px;
+            padding-right: 20px; /* Evita que la barra de progrés tapi text */
         }
 
         .content-section {
@@ -174,9 +176,10 @@
             display: block;
         }
 
+        /* Text tradicional (alineat a l'esquerra, sense justificar) */
         article p {
             font-size: 1.1rem;
-            text-align: justify;
+            text-align: left;
             margin-bottom: 20px;
         }
 
@@ -197,6 +200,49 @@
             border-left: 4px solid var(--accent-color);
         }
 
+        /* Peu de Pàgina (Footer) */
+        footer {
+            margin-top: 60px;
+            padding: 40px 20px;
+            background-color: #f9f9f9;
+            border-top: 4px solid var(--text-main);
+            text-align: center;
+            font-family: var(--font-sans);
+        }
+
+        .footer-socials a {
+            display: inline-block;
+            margin: 0 10px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+
+        .footer-socials a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-links {
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-copyright {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
         /* Responsive per mòbils */
         @media (max-width: 768px) {
             .container {
@@ -210,12 +256,15 @@
                 margin-bottom: 30px;
                 padding-bottom: 20px;
             }
+            main.content {
+                padding-right: 10px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- BARRA DE PROGRÉS -->
+    <!-- BARRA DE PROGRÉS (DRETA) -->
     <div id="progress-container">
         <div id="progress-bar"></div>
     </div>
@@ -286,7 +335,6 @@
             <section id="article3" class="content-section">
                 <article>
                     <h2>Fita històrica aquest 2050: Es desconnecta l'últim macro-centre de dades terrestre.</h2>
-                    <!-- Imatge generada per IA d'un centre de dades antic i polsegós -->
                     <img src="https://image.pollinations.ai/prompt/abandoned%20dusty%20old%20terrestrial%20data%20center%20server%20room%20dark%20cinematic?width=800&height=450&nologo=true" alt="Antic centre de dades terrestre abandonat">
                     <span class="image-caption">Símbol de la fi d'una era: un antic macro-centre de dades terrestre, ara obsolet i desconnectat.</span>
                     <p>Avui, el món tanca oficialment un capítol fosc de la seva història tecnològica. A les 12:00h s'ha apagat l'últim macro-centre de dades terrestre operatiu, posant fi a la migració de la xarxa global a l'òrbita baixa de la Terra (LEO). La transició ja és del 100%. Aquesta fita històrica culmina el procés de salvació ecològica iniciat després de les grans crisis hídriques i energètiques de la dècada dels 30. Enrere queden els temps on mantenir actiu el "núvol" significava sacrificar l'aigua dolça de poblacions senceres i disparar el consum elèctric global. Tot el pes de la Intel·ligència Artificial i l'emmagatzematge digital recau ara sobre la nostra constel·lació orbital.</p>
@@ -308,10 +356,30 @@
         </main>
     </div>
 
+    <!-- PEU DE PÀGINA -->
+    <footer>
+        <div class="footer-socials">
+            <a href="#" aria-label="X/Twitter">𝕏 Twitter</a>
+            <a href="#" aria-label="LinkedIn">in LinkedIn</a>
+            <a href="#" aria-label="Instagram">📷 Instagram</a>
+            <a href="#" aria-label="Mastodon">🐘 Mastodon</a>
+        </div>
+        <div class="footer-links">
+            <a href="#">Qui som</a>
+            <a href="#">Contacte</a>
+            <a href="#">Avís Legal</a>
+            <a href="#">Política de Privacitat</a>
+            <a href="#">Política de Galetes</a>
+        </div>
+        <div class="footer-copyright">
+            &copy; 2050 L'Èxode Digital. Tots els drets reservats. Aquesta és una publicació d'arxiu històric.
+        </div>
+    </footer>
+
     <script>
-        // Lògica per actualitzar la barra de progrés en fer scroll
+        // Lògica per actualitzar la barra de progrés vertical en fer scroll
         window.addEventListener('scroll', updateProgressBar);
-        window.addEventListener('resize', updateProgressBar); // Actualitza si canvia la mida de la finestra
+        window.addEventListener('resize', updateProgressBar);
 
         function updateProgressBar() {
             const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -322,7 +390,8 @@
                 scrollPercentage = (scrollTop / scrollHeight) * 100;
             }
             
-            document.getElementById('progress-bar').style.width = scrollPercentage + '%';
+            // Actualitzem l'alçada (height) en lloc de l'amplada
+            document.getElementById('progress-bar').style.height = scrollPercentage + '%';
         }
 
         function showSection(sectionId, element) {
@@ -339,8 +408,8 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
             
             // Reinicia la barra de progrés
-            document.getElementById('progress-bar').style.width = '0%';
-            setTimeout(updateProgressBar, 100); // Dona temps al DOM a recalcular altures
+            document.getElementById('progress-bar').style.height = '0%';
+            setTimeout(updateProgressBar, 100);
         }
     </script>
 </body>
