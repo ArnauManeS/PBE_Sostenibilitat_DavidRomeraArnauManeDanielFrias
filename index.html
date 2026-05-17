@@ -54,7 +54,7 @@
         }
 
         #home-btn {
-            display: none; /* S'oculta a la portada */
+            display: none;
             font-size: 1.5rem;
         }
 
@@ -230,6 +230,14 @@
             padding-top: 30px;
         }
 
+        /* Força la mateixa mida per a totes les imatges de les targetes secundàries */
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--border-color);
+        }
+
         .card h3 {
             font-size: 1.4rem;
             margin-top: 10px;
@@ -268,7 +276,7 @@
             font-weight: normal;
         }
 
-        article img {
+        article > img {
             width: 100%;
             height: auto;
             max-height: 500px;
@@ -302,7 +310,7 @@
             margin-bottom: 10px;
         }
 
-        /* Següent Article (Navegació inferior) */
+        /* Següent Article */
         .next-article-nav {
             margin-top: 40px;
             margin-bottom: 60px;
@@ -341,7 +349,7 @@
             margin: 0 12px;
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 1.5rem; /* Icones més grans */
+            font-size: 1.5rem;
             transition: color 0.2s;
         }
 
@@ -378,7 +386,7 @@
 </head>
 <body>
 
-    <!-- CONTROLS SUPERIORS (Menú i Portada) -->
+    <!-- CONTROLS SUPERIORS -->
     <div class="top-controls">
         <button id="menu-toggle" class="top-btn" aria-label="Obrir menú" onclick="toggleMenu()">
             <i class="fa-solid fa-bars"></i>
@@ -388,7 +396,7 @@
         </button>
     </div>
 
-    <!-- MENÚ LATERAL OCULT -->
+    <!-- MENÚ LATERAL -->
     <nav id="side-menu" class="side-menu">
         <button class="close-btn" onclick="toggleMenu()">×</button>
         <h3>Seccions</h3>
@@ -401,7 +409,7 @@
         </ul>
     </nav>
 
-    <!-- BARRA DE PROGRÉS (DRETA) -->
+    <!-- BARRA DE PROGRÉS -->
     <div id="progress-container">
         <div id="progress-text">0%</div>
         <div id="progress-bar"></div>
@@ -429,7 +437,7 @@
                     <div class="secondary-articles">
                         <article class="card">
                             <a onclick="showSection('article2')">
-                                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=400&q=80" alt="Planeta Terra des de l'espai">
+                                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80" alt="Planeta Terra des de l'espai">
                                 <h3>Com l'energia solar contínua i el zero absolut de l'espai van salvar la xarxa</h3>
                             </a>
                             <p>El naixement del Projecte 'Òrbita Freda' i la cooperació tecnològica global.</p>
@@ -437,7 +445,7 @@
                         
                         <article class="card">
                             <a onclick="showSection('article3')">
-                                <img src="https://image.pollinations.ai/prompt/abandoned%20dusty%20old%20terrestrial%20data%20center%20server%20room%20dark%20cinematic?width=400&height=250&nologo=true" alt="Antic centre de dades abandonat">
+                                <img src="https://image.pollinations.ai/prompt/abandoned%20dusty%20old%20terrestrial%20data%20center%20server%20room%20dark%20cinematic?width=600&height=400&nologo=true" alt="Antic centre de dades abandonat">
                                 <h3>Fita històrica: Es desconnecta l'últim macro-centre terrestre</h3>
                             </a>
                             <p>Un moment simbòlic. S'apaguen els servidors de Terra per donar pas als boscos.</p>
@@ -445,7 +453,7 @@
 
                         <article class="card">
                             <a onclick="showSection('article4')">
-                                <img src="https://images.unsplash.com/photo-1614729939124-032f0b56c9ce?auto=format&fit=crop&w=400&q=80" alt="Mecànica astronauta">
+                                <img src="https://image.pollinations.ai/prompt/female%20astronaut%20mechanic%20repairing%20server%20rack%20in%20outer%20space%20zero%20gravity%20cinematic?width=600&height=400&nologo=true" alt="Mecànica astronauta">
                                 <h3>Mecànics de dades a gravetat zero</h3>
                             </a>
                             <p>Un dia a la vida de la Laia, tècnica de manteniment orbital a 400 km d'altura.</p>
@@ -508,9 +516,8 @@
             <section id="article4" class="content-section">
                 <article>
                     <h2>Mecànics de dades a gravetat zero: Un dia a la vida dels tècnics de manteniment orbital.</h2>
-                    <!-- Imatge corregida amb enllaç fiable -->
-                    <img src="https://images.unsplash.com/photo-1614729939124-032f0b56c9ce?auto=format&fit=crop&w=1200&q=80" alt="Tècnica astronauta a gravetat zero">
-                    <span class="image-caption">La Laia, tècnica de manteniment de l'EMO-3, fotografiada durant la nostra entrevista mentre operava.</span>
+                    <img src="https://image.pollinations.ai/prompt/female%20astronaut%20mechanic%20repairing%20server%20rack%20in%20outer%20space%20zero%20gravity%20cinematic?width=1200&height=675&nologo=true" alt="Tècnica astronauta a gravetat zero reparant un servidor espacial">
+                    <span class="image-caption">La Laia, tècnica de manteniment de l'EMO-3, fotografiada durant la nostra entrevista mentre operava al fuselatge exterior.</span>
                     <p>Són les 06:00 a l'Estació de Manteniment Orbital (EMO-3). La Laia es revisa l'arnès del seu vestit extravehicular abans de sortir per la resclosa. Ja no existeixen els terres falsos, els cables enredats ni els passadissos eixordadors plens d'aire condicionat dels antics centres de dades terrestres. Ara, el "passadís" on treballa és el buit gèlid de l'espai, i el silenci és absolut. Ser tècnic de sistemes l'any 2050 ja no implica lluitar contra la pols o els problemes de sobreescalfament. A 400 quilòmetres sobre la superfície de la Terra, la temperatura dels servidors s'autoregula gràcies al fred cosmic.</p>
                     <p>La missió d'avui de la Laia i el seu equip és rutinària però vital: substituir tres mòduls d'emmagatzematge d'estat sòlid que s'han degradat a causa de la radiació solar i recalibrar un transmissor òptic làser que connecta el clúster del sud d'Europa amb el d'Amèrica. El treball és lent i metòdic. A gravetat zero, no pots deixar un tornavís sobre un servidor; qualsevol eina o component solt es pot convertir en un projectil letal per als immensos panells solars que alimenten la infraestructura. Cada eina està lligada magnèticament al vestit, i els tècnics es desplacen pel fuselatge exterior del macro-servidor amb moviments molt calculats, impulsant-se suaument amb petits raigs de gas comprimit.</p>
                     <p>"El més difícil ja no és diagnosticar per què falla una placa base", comenta la Laia a través de l'enllaç de ràdio amb el centre de control terrestre. "El veritable repte és aconseguir canviar un xip mil·limètric amb guants de pressió, mentre intentes no distreure't mirant com passen els huracans sobre l'Atlàntic just sota els teus peus". Quan acaba el seu torn de vuit hores i torna a entrar a l'estació pressuritzada, deixa enrere milers de terabytes de dades fluint ininterrompudament cap a la Terra. Gràcies a "mecànics orbitals" com ella, la humanitat pot continuar entrenant models de llenguatge avançats, operant hospitals a distància i gestionant l'economia global sense gastar ni una sola gota d'aigua de les nostres reserves terrestres. Són els guardians invisibles del nostre núvol que, per fi, flota literalment entre les estrelles.</p>
