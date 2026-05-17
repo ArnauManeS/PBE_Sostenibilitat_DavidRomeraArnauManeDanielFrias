@@ -6,83 +6,111 @@
     <title>Titulars i Articles: L'Èxode Digital</title>
     <style>
         :root {
-            --bg-color: #f0f2f5;
             --text-color: #333;
-            --article-bg: #ffffff;
-            --accent-color: #0056b3;
-            --sidebar-bg: #1a1a1a;
-            --sidebar-text: #f4f4f4;
+            --article-bg: rgba(255, 255, 255, 0.95);
+            --accent-color: #4da6ff;
+            --btn-bg: #1a1a2e;
+            --btn-hover: #16213e;
         }
+        
         body {
             font-family: 'Segoe UI', system-ui, sans-serif;
-            background-color: var(--bg-color);
+            /* Fons suau amb temàtica espacial */
+            background: radial-gradient(circle at center, #2b2f42 0%, #0b0c10 100%);
+            background-attachment: fixed;
             color: var(--text-color);
             line-height: 1.6;
             margin: 0;
-            display: flex;
-        }
-        
-        /* Disseny del Menú Lateral */
-        .sidebar {
-            width: 280px;
-            background-color: var(--sidebar-bg);
-            color: var(--sidebar-text);
-            height: 100vh;
-            position: fixed;
-            padding: 30px 20px;
-            box-sizing: border-box;
-            overflow-y: auto;
-        }
-        .sidebar h2 {
-            color: var(--accent-color);
-            font-size: 1.3rem;
-            border-bottom: 1px solid #444;
-            padding-bottom: 15px;
-            margin-top: 0;
-        }
-        .sidebar ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        .sidebar li {
-            margin-bottom: 15px;
-        }
-        .sidebar a {
-            color: var(--sidebar-text);
-            text-decoration: none;
-            font-size: 0.95rem;
-            cursor: pointer;
-            display: block;
-            padding: 8px;
-            border-radius: 6px;
-            transition: background 0.2s, color 0.2s;
-        }
-        .sidebar a:hover, .sidebar a.active-link {
-            background-color: #333;
-            color: #66b3ff;
+            padding: 20px;
         }
 
-        /* Contenidor Principal */
+        /* Contenidor Principal Centrat */
         main {
-            flex: 1;
-            margin-left: 280px;
-            padding: 40px;
-            max-width: 900px;
+            max-width: 800px;
+            margin: 0 auto; /* Centra el contingut */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
+
         h1 {
             text-align: center;
             color: var(--accent-color);
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        /* Menú Desplegable */
+        .dropdown {
+            position: relative;
+            display: inline-block;
             margin-bottom: 40px;
         }
         
+        .dropbtn {
+            background-color: var(--btn-bg);
+            color: white;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border: 1px solid #4da6ff;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .dropbtn:hover {
+            background-color: var(--btn-hover);
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #1a1a2e;
+            min-width: 250px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.5);
+            border-radius: 8px;
+            z-index: 1;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 10px;
+            border: 1px solid #333;
+        }
+        
+        .dropdown-content.show {
+            display: block;
+            animation: fadeIn 0.2s ease;
+        }
+        
+        .dropdown-content a {
+            color: #f4f4f4;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            cursor: pointer;
+            border-bottom: 1px solid #2a2a4a;
+        }
+        
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-content a:hover, .dropdown-content a.active-link {
+            background-color: var(--btn-hover);
+            color: var(--accent-color);
+            border-radius: 8px;
+        }
+
         /* Ocultar/Mostrar seccions dinàmicament */
         .content-section {
             display: none;
             animation: fadeIn 0.4s ease;
+            width: 100%;
         }
+        
         .content-section.active {
             display: block;
         }
+        
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -93,16 +121,18 @@
             background-color: var(--article-bg);
             padding: 40px;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
             margin-bottom: 40px;
         }
+        
         article h2 {
             color: #1a1a1a;
             font-size: 1.5rem;
             margin-top: 0;
-            border-bottom: 2px solid var(--bg-color);
+            border-bottom: 2px solid #ddd;
             padding-bottom: 10px;
         }
+        
         img {
             width: 100%;
             height: 350px;
@@ -111,10 +141,12 @@
             margin: 20px 0;
             background-color: #ddd;
         }
+        
         p {
             margin-bottom: 15px;
             text-align: justify;
         }
+        
         ul.article-list {
             margin-bottom: 15px;
             padding-left: 20px;
@@ -123,20 +155,20 @@
 </head>
 <body>
 
-    <!-- MENÚ LATERAL -->
-    <nav class="sidebar">
-        <h2>Índex de Continguts</h2>
-        <ul>
-            <li><a onclick="showSection('home', this)" class="active-link">Inici: Presentació</a></li>
-            <li><a onclick="showSection('article1', this)">1. La Gran Crisi del 2032</a></li>
-            <li><a onclick="showSection('article2', this)">2. Projecte 'Òrbita Freda'</a></li>
-            <li><a onclick="showSection('article3', this)">3. Desconnexió Terrestre</a></li>
-            <li><a onclick="showSection('article4', this)">4. Mecànics a Gravetat Zero</a></li>
-        </ul>
-    </nav>
-
     <main>
         <h1>Cròniques de l'Òrbita Freda</h1>
+
+        <!-- MENÚ DESPLEGABLE -->
+        <div class="dropdown">
+            <button onclick="toggleMenu()" class="dropbtn">☰ Menú d'Articles</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a onclick="showSection('home', this)" class="active-link">Inici: Presentació</a>
+                <a onclick="showSection('article1', this)">1. La Gran Crisi del 2032</a>
+                <a onclick="showSection('article2', this)">2. Projecte 'Òrbita Freda'</a>
+                <a onclick="showSection('article3', this)">3. Desconnexió Terrestre</a>
+                <a onclick="showSection('article4', this)">4. Mecànics a Gravetat Zero</a>
+            </div>
+        </div>
 
         <!-- PANTALLA PRINCIPAL (PRESENTACIÓ) -->
         <section id="home" class="content-section active">
@@ -144,7 +176,7 @@
                 <h2>Benvinguts a l'Arxiu de l'Èxode Digital</h2>
                 <p>Ens trobem a l'any 2050. Aquest dossier digital recull els esdeveniments històrics que van transformar per sempre la nostra relació amb la tecnologia i els recursos del planeta Terra.</p>
                 <p>Des del col·lapse ecològic provocat per l'entrenament dels antics models d'Intel·ligència Artificial, fins a la gesta heroica d'enviar tota la nostra infraestructura de dades a l'espai, aquestes cròniques documenten com la humanitat va aprendre a sostenir el seu creixement tecnològic respectant els límits biològics del seu entorn.</p>
-                <p><strong>Utilitza el menú lateral per navegar i llegir els articles de manera individual.</strong></p>
+                <p><strong>Utilitza el menú per navegar i llegir els articles de manera individual.</strong></p>
             </article>
         </section>
 
@@ -153,9 +185,9 @@
             <article>
                 <h2>La Gran Crisi del 2032: Quan el refredament dels servidors consumia més aigua que l'agricultura mundial.</h2>
                 <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="Servidors sobreescalfats">
-                <p>L'any 2032, la societat digital va xocar de front amb la realitat biològica del planeta. El consum excessiu dels centres de dades terrestres va arribar al seu punt de no retorn. Ja la dècada anterior s'havien vist els primers senyals d'alerta: l'any 2025 el Regne Unit va arribar a demanar a la població que esborrés correus electrònics per estalviar aigua durant una greu sequera. No obstant això, el veritable col·lapse trigaria uns anys més a esclatar. Impulsats per l'entrenament massiu de models d'Intel·ligència Artificial i la digitalització total, els "núvols" -que la gent va descobrir que de núvols no en tenien res - es van convertir en forats negres de recursos.</p>
-                <p>L'any 2032, l'aigua dolça purificada necessària per als complexos sistemes de refrigeració líquida va superar el consum hídric de tota l'agricultura mundial. Conques hidrogràfiques senceres s'esgotaven només per evitar que els servidors es fonguessin. Aquesta situació va generar una crisi social sense precedents. Les comunitats locals es van quedar sense aigua per als cultius i per al consum humà, mentre les grans corporacions tecnològiques mantenien actius els seus processos massius de dades. El mite de la tecnologia invisible i neta es va esfondrar definitivament.</p>
-                <p>Va ser aquest escenari límit el que va forçar la indústria a prendre una decisió dràstica i mirar cap al cel. Si la Terra no podia suportar la calor i la set de la nostra activitat digital, la solució passava per l'òrbita baixa terrestre (LEO). La crisi del 2032 va ser el catalitzador que va iniciar l'èxode de les dades cap a l'espai, aprofitant el fred del buit còsmic i la llum solar ininterrompuda per tancar, per fi, l'aixeta a la Terra. Avui, al 2050, ho recordem com el moment en què gairebé morim d'èxit digital.</p>
+                <p>L'any 2032, la societat digital va xocar de front amb la realitat biològica del planeta. El consum excessiu dels centres de dades terrestres va arribar al seu punt de no retorn. Ja la dècada anterior s'havien vist els primers senyals d'alerta: l'any 2025 el Regne Unit va arribar a demanar a la població que esborrés correus electrònics per estalviar aigua durant una greu sequera.</p>
+                <p>L'aigua dolça purificada necessària per als complexos sistemes de refrigeració líquida va superar el consum hídric de tota l'agricultura mundial. Conques hidrogràfiques senceres s'esgotaven només per evitar que els servidors es fonguessin, generant una crisi social sense precedents.</p>
+                <p>Va ser aquest escenari límit el que va forçar la indústria a prendre una decisió dràstica i mirar cap al cel. La solució passava per l'òrbita baixa terrestre (LEO), aprofitant el fred del buit còsmic per tancar, per fi, l'aixeta a la Terra.</p>
             </article>
         </section>
 
@@ -164,12 +196,12 @@
             <article>
                 <h2>Projecte 'Òrbita Freda': Com l'energia solar contínua i el zero absolut de l'espai van salvar la nostra xarxa.</h2>
                 <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" alt="Planeta Terra des de l'espai">
-                <p>L'any 2038 va marcar un abans i un després en les telecomunicacions. Davant del col-lapse energètic i la crisi hídrica del 2032, la posada en marxa del Projecte 'Orbita Freda' va salvar l'ecosistema digital traslladant els centres de dades a l'òrbita baixa terrestre (LEO). Aquesta fita històrica es va basar en dos pilars que ho van canviar tot:</p>
+                <p>L'any 2038 va marcar un abans i un després en les telecomunicacions. Davant del col-lapse energètic i la crisi hídrica del 2032, la posada en marxa del Projecte 'Orbita Freda' va salvar l'ecosistema digital.</p>
                 <ul class="article-list">
-                    <li><strong>Energia solar contínua:</strong> A l'espai, els panells fotovoltaics no pateixen el cicle dia/nit ni el mal temps. Des d'aleshores, això garanteix un subministrament 100% net i ininterromput per a la Intel·ligència Artificial.</li>
-                    <li><strong>Refrigeració passiva:</strong> L'ambient gèlid del buit còsmic va permetre dissipar la calor directament amb radiadors d'emissió tèrmica, eliminant de soca-rel l'ús d'aigua (i la sequera d'aqüífers) per refredar servidors.</li>
+                    <li><strong>Energia solar contínua:</strong> A l'espai, els panells fotovoltaics no pateixen el cicle dia/nit ni el mal temps, garantint subministrament 100% net.</li>
+                    <li><strong>Refrigeració passiva:</strong> L'ambient gèlid del buit còsmic va permetre dissipar la calor directament, eliminant l'ús d'aigua terrestre.</li>
                 </ul>
-                <p>Avui, l'any 2050, el "núvol" és literalment a l'espai. Connectats mitjançant làsers d'alta velocitat, aquests centres orbitals ens han permès seguir creixent tecnològicament i, alhora, retornar l'aigua i l'energia a la Terra.</p>
+                <p>Avui, l'any 2050, el "núvol" és literalment a l'espai, permetent-nos créixer i retornar l'aigua a la Terra.</p>
             </article>
         </section>
 
@@ -178,8 +210,8 @@
             <article>
                 <h2>Fita històrica aquest 2050: Es desconnecta l'últim macro-centre de dades terrestre.</h2>
                 <img src="https://images.unsplash.com/photo-1544377193-33dcf4d68fb5?auto=format&fit=crop&w=800&q=80" alt="Cable desconnectat">
-                <p>Avui, el món tanca oficialment un capítol fosc de la seva història tecnològica. A les 12:00h s'ha apagat l'últim macro-centre de dades terrestre operatiu, posant fi a la migració de la xarxa global a l'òrbita baixa de la Terra (LEO). La transició ja és del 100%. Aquesta fita històrica culmina el procés de salvació ecològica iniciat després de les grans crisis hídriques i energètiques de la dècada dels 30. Enrere queden els temps on mantenir actiu el "núvol" significava sacrificar l'aigua dolça de poblacions senceres i disparar el consum elèctric global. Tot el pes de la Intel·ligència Artificial i l'emmagatzematge digital recau ara sobre la nostra constel·lació orbital.</p>
-                <p>L'energia solar inesgotable i el fred absolut de l'espai han demostrat ser l'únic entorn viable per sostenir el nostre ritme tecnològic. Les antigues instal·lacions terrestres, avui obsoletes, començaran demà mateix el seu desmantellament per ser reconvertides en boscos i parcs nacionals. Un recordatori físic que la tecnologia només pot avançar si respecta els límits biològics del nostre planeta.</p>
+                <p>Avui, el món tanca oficialment un capítol fosc de la seva història tecnològica. A les 12:00h s'ha apagat l'últim macro-centre de dades terrestre operatiu, posant fi a la migració de la xarxa global a l'òrbita baixa de la Terra (LEO).</p>
+                <p>Les antigues instal·lacions terrestres, avui obsoletes, començaran demà mateix el seu desmantellament per ser reconvertides en boscos i parcs nacionals. Un recordatori físic que la tecnologia només pot avançar si respecta els límits biològics del nostre planeta.</p>
             </article>
         </section>
 
@@ -188,15 +220,34 @@
             <article>
                 <h2>Mecànics de dades a gravetat zero: Un dia a la vida dels tècnics de manteniment orbital.</h2>
                 <img src="https://images.unsplash.com/photo-1614729939124-032f0b56c9ce?auto=format&fit=crop&w=800&q=80" alt="Astronauta a l'espai">
-                <p>Són les 06:00 a l'Estació de Manteniment Orbital (EMO-3). La Laia es revisa l'arnès del seu vestit extravehicular abans de sortir per la resclosa. Ja no existeixen els terres falsos, els cables enredats ni els passadissos eixordadors plens d'aire condicionat dels antics centres de dades terrestres. Ara, el "passadís" on treballa és el buit gèlid de l'espai, i el silenci és absolut. Ser tècnic de sistemes l'any 2050 ja no implica lluitar contra la pols o els problemes de sobreescalfament. A 400 quilòmetres sobre la superfície de la Terra, la temperatura dels servidors s'autoregula gràcies al fred cosmic.</p>
-                <p>La missió d'avui de la Laia i el seu equip és rutinària però vital: substituir tres mòduls d'emmagatzematge d'estat sòlid que s'han degradat a causa de la radiació solar i recalibrar un transmissor òptic làser que connecta el clúster del sud d'Europa amb el d'Amèrica. El treball és lent i metòdic. A gravetat zero, no pots deixar un tornavís sobre un servidor; qualsevol eina o component solt es pot convertir en un projectil letal per als immensos panells solars que alimenten la infraestructura. Cada eina està lligada magnèticament al vestit, i els tècnics es desplacen pel fuselatge exterior del macro-servidor amb moviments molt calculats, impulsant-se suaument amb petits raigs de gas comprimit.</p>
-                <p>"El més difícil ja no és diagnosticar per què falla una placa base", comenta la Laia a través de l'enllaç de ràdio amb el centre de control terrestre. "El veritable repte és aconseguir canviar un xip mil·limètric amb guants de pressió, mentre intentes no distreure't mirant com passen els huracans sobre l'Atlàntic just sota els teus peus". Quan acaba el seu torn de vuit hores i torna a entrar a l'estació pressuritzada, deixa enrere milers de terabytes de dades fluint ininterrompudament cap a la Terra. Gràcies a "mecànics orbitals" com ella, la humanitat pot continuar entrenant models de llenguatge avançats, operant hospitals a distància i gestionant l'economia global sense gastar ni una sola gota d'aigua de les nostres reserves terrestres. Són els guardians invisibles del nostre núvol que, per fi, flota literalment entre les estrelles.</p>
+                <p>Són les 06:00 a l'Estació de Manteniment Orbital (EMO-3). La Laia es revisa l'arnès del seu vestit extravehicular abans de sortir per la resclosa. Ara, el "passadís" on treballa és el buit gèlid de l'espai.</p>
+                <p>La missió d'avui és vital: substituir mòduls d'emmagatzematge degradats. A gravetat zero, qualsevol eina o component solt es pot convertir en un projectil letal per als panells solars. Cada eina està lligada magnèticament al vestit.</p>
+                <p>Gràcies a "mecànics orbitals" com ella, la humanitat pot continuar operant sense gastar ni una sola gota d'aigua de les nostres reserves terrestres.</p>
             </article>
         </section>
 
     </main>
 
     <script>
+        // Funció per obrir/tancar el menú
+        function toggleMenu() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Tancar el menú si es fa clic a fora
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        // Funció per mostrar l'article seleccionat
         function showSection(sectionId, element) {
             // Ocultar totes les seccions
             document.querySelectorAll('.content-section').forEach(function(section) {
@@ -206,13 +257,16 @@
             document.getElementById(sectionId).classList.add('active');
             
             // Actualitzar la classe activa al menú
-            document.querySelectorAll('.sidebar a').forEach(function(link) {
+            document.querySelectorAll('.dropdown-content a').forEach(function(link) {
                 link.classList.remove('active-link');
             });
             element.classList.add('active-link');
             
+            // Tancar menú en seleccionar
+            document.getElementById("myDropdown").classList.remove("show");
+            
             // Tornar a dalt
-            window.scrollTo(0, 0);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
 </body>
