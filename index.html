@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cròniques de l'Òrbita Freda</title>
-    <!-- Afegim FontAwesome per les icones de xarxes socials reals -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Estil periodístic tipus La Vanguardia / Diari Clàssic */
@@ -47,19 +46,19 @@
             color: var(--accent-hover);
         }
 
-        /* Botó Portada */
+        /* Botó Portada Minimalista */
         #home-btn {
             position: fixed;
-            top: 28px;
+            top: 31px;
             left: 70px;
             background: none;
             border: none;
-            font-size: 1.5rem;
             color: var(--text-main);
             cursor: pointer;
             z-index: 1001;
             transition: color 0.2s;
-            text-decoration: none;
+            display: flex;
+            align-items: center;
         }
 
         #home-btn:hover {
@@ -459,7 +458,7 @@
         @media (max-width: 768px) {
             .container { padding: 0 20px; }
             #menu-toggle { top: 15px; left: 15px; }
-            #home-btn { top: 18px; left: 60px; }
+            #home-btn { top: 21px; left: 60px; }
             header h1 { font-size: 2.5rem; }
             .comment { flex-direction: column; }
             .comment-avatar { margin-bottom: 10px; }
@@ -468,9 +467,14 @@
 </head>
 <body>
 
-    <!-- BOTÓ MENÚ HAMBURGUESA I BOTÓ PORTADA -->
+    <!-- BOTÓ MENÚ HAMBURGUESA I BOTÓ PORTADA MINIMALISTA -->
     <button id="menu-toggle" aria-label="Obrir menú" onclick="toggleMenu()">☰</button>
-    <button id="home-btn" aria-label="Anar a la portada" title="Anar a la portada" onclick="showSection('home')">🏠</button>
+    <button id="home-btn" aria-label="Anar a la portada" title="Anar a la portada" onclick="showSection('home')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+    </button>
 
     <!-- MENÚ LATERAL OCULT -->
     <nav id="side-menu" class="side-menu">
