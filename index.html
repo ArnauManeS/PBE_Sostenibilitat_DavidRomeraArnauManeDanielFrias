@@ -26,6 +26,24 @@
             line-height: 1.6;
         }
 
+        /* Barra de progrés de lectura */
+        #progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background-color: transparent;
+            z-index: 1000;
+        }
+
+        #progress-bar {
+            height: 100%;
+            width: 0%;
+            background-color: var(--accent-hover);
+            transition: width 0.1s ease-out;
+        }
+
         /* Capçalera del Diari (Masthead) */
         header {
             text-align: center;
@@ -33,6 +51,7 @@
             border-bottom: 4px solid var(--text-main);
             border-top: 12px solid var(--accent-color);
             margin-bottom: 30px;
+            margin-top: 6px; /* Espai per la barra de progrés */
         }
 
         header h1 {
@@ -196,6 +215,11 @@
 </head>
 <body>
 
+    <!-- BARRA DE PROGRÉS -->
+    <div id="progress-container">
+        <div id="progress-bar"></div>
+    </div>
+
     <header>
         <h1>L'Èxode Digital</h1>
         <div class="date-bar">Edició Especial · Dilluns, 18 de Maig de 2050 · Dossier Històric</div>
@@ -285,6 +309,22 @@
     </div>
 
     <script>
+        // Lògica per actualitzar la barra de progrés en fer scroll
+        window.addEventListener('scroll', updateProgressBar);
+        window.addEventListener('resize', updateProgressBar); // Actualitza si canvia la mida de la finestra
+
+        function updateProgressBar() {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            
+            let scrollPercentage = 0;
+            if (scrollHeight > 0) {
+                scrollPercentage = (scrollTop / scrollHeight) * 100;
+            }
+            
+            document.getElementById('progress-bar').style.width = scrollPercentage + '%';
+        }
+
         function showSection(sectionId, element) {
             document.querySelectorAll('.content-section').forEach(function(section) {
                 section.classList.remove('active');
@@ -297,6 +337,10 @@
             element.classList.add('active-link');
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Reinicia la barra de progrés
+            document.getElementById('progress-bar').style.width = '0%';
+            setTimeout(updateProgressBar, 100); // Dona temps al DOM a recalcular altures
         }
     </script>
 </body>
