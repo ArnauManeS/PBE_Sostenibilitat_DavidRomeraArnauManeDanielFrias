@@ -190,7 +190,7 @@
         article { margin-bottom: 50px; }
         article h2 { font-size: 2.5rem; line-height: 1.2; margin-top: 0; margin-bottom: 20px; font-weight: normal; }
         article h3 { font-size: 1.8rem; margin-top: 30px;}
-        article img.hero-img { width: 100%; height: auto; max-height: 500px; object-fit: cover; margin-bottom: 15px; border-bottom: 2px solid var(--border-color); }
+        article img { width: 100%; height: auto; max-height: 500px; object-fit: cover; margin-bottom: 15px; border-bottom: 2px solid var(--border-color); }
         .image-caption { font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px; display: block; }
         article p { font-size: 1.15rem; text-align: left; margin-bottom: 20px; line-height: 1.7; }
         article ul { font-size: 1.15rem; margin-bottom: 20px; padding-left: 20px; }
@@ -207,26 +207,26 @@
         }
         .real-references h4 { margin-top: 0; color: var(--progress-blue); }
 
-        /* Publicitat Integrada (Dins de l'article) */
-        .cyber-ad {
+        /* Publicitat Integrada (Estil Diari) */
+        .newspaper-ad {
             float: right;
             width: 250px;
-            background: #0a0a0a;
-            color: #00ffcc;
-            font-family: 'Courier New', Courier, monospace;
+            background-color: #fcfcfc;
+            color: var(--text-main);
+            font-family: var(--font-sans);
             padding: 15px;
             margin: 10px 0 20px 30px;
-            border: 1px solid #00ffcc;
-            box-shadow: 0 0 10px rgba(0, 255, 204, 0.15);
+            border: 1px solid var(--border-color);
+            border-top: 3px solid var(--text-muted);
             text-align: center;
             cursor: pointer;
-            border-radius: 4px;
+            transition: background-color 0.2s;
         }
-        .cyber-ad:hover { background: #111; box-shadow: 0 0 15px rgba(0, 255, 204, 0.4); }
-        .cyber-ad span.ad-label { display: block; font-size: 0.7rem; color: #555; text-align: right; margin-bottom: 5px; text-transform: uppercase; }
-        .cyber-ad h4 { font-size: 1.1rem; margin: 0 0 10px 0; text-transform: uppercase; color: #ff0055; }
-        .cyber-ad p { font-size: 0.9rem; margin: 0; line-height: 1.4; color: #ccc; }
-        .cyber-ad img { width: 100%; height: auto; margin-bottom: 10px; filter: grayscale(100%) sepia(100%) hue-rotate(130deg); border-radius: 2px; }
+        .newspaper-ad:hover { background-color: #f0f0f0; }
+        .newspaper-ad span.ad-label { display: block; font-size: 0.7rem; color: var(--text-muted); text-align: right; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;}
+        .newspaper-ad h4 { font-size: 1.1rem; margin: 0 0 10px 0; font-family: var(--font-serif); color: var(--accent-color); text-transform: uppercase;}
+        .newspaper-ad p { font-size: 0.9rem; margin: 0; line-height: 1.4; color: var(--text-muted); }
+        .newspaper-ad img { width: 100%; height: auto; margin-bottom: 10px; filter: grayscale(80%); border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
 
         /* Tira d'accions (Like, Guardar, Compartir...) */
         .action-strip {
@@ -309,7 +309,7 @@
             #menu-toggle { top: 15px; left: 15px; }
             #home-btn { top: 21px; left: 60px; }
             header h1 { font-size: 2.5rem; }
-            .cyber-ad { float: none; width: 100%; margin: 20px 0; }
+            .newspaper-ad { float: none; width: 100%; margin: 20px 0; }
             .comment { flex-direction: column; }
             .comment-avatar { margin-bottom: 10px; }
             .action-strip { justify-content: center; }
@@ -364,7 +364,7 @@
                 <div class="home-grid">
                     <article class="hero-article">
                         <a onclick="showSection('article1')">
-                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80" alt="Servidors sobreescalfats" class="hero-img">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80" alt="Servidors sobreescalfats">
                             <h2>La Gran Crisi del 2032: Quan el refredament dels servidors consumia més aigua que l'agricultura mundial.</h2>
                         </a>
                         <p class="excerpt">La societat digital va xocar de front amb la realitat biològica del planeta. El consum excessiu dels antics centres de dades terrestres va arribar a assecar conques hidrogràfiques senceres, obligant a un canvi de paradigma radical cap a l'espai.</p>
@@ -402,13 +402,13 @@
             <section id="article1" class="content-section">
                 <article>
                     <h2>La Gran Crisi del 2032: Quan el refredament dels servidors consumia més aigua que l'agricultura mundial.</h2>
-                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80" alt="Servidors sobreescalfats" class="hero-img">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80" alt="Servidors sobreescalfats">
                     <span class="image-caption">Imatge d'arxiu d'un macro-centre de dades terrestre durant els episodis de sobreescalfament pre-crisi.</span>
                     
                     <p>L'any 2032, la societat digital va xocar de front amb la realitat biològica del planeta. El consum excessiu dels centres de dades terrestres va arribar al seu punt de no retorn. Ja la dècada anterior s'havien vist els primers senyals d'alerta: l'any 2025 el Regne Unit va arribar a demanar a la població que esborrés correus electrònics per estalviar aigua durant una greu sequera. No obstant això, el veritable col·lapse trigaria uns anys més a esclatar.</p>
                     
-                    <!-- Publicitat Integrada 1 -->
-                    <div class="cyber-ad" onclick="alert('Enllaç HoloNet redirigint...')">
+                    <!-- Publicitat Integrada -->
+                    <div class="newspaper-ad" onclick="alert('Redirigint a la plataforma del patrocinador...')">
                         <span class="ad-label">Publicitat Patrocinada</span>
                         <img src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?auto=format&fit=crop&w=250&q=80" alt="Mart">
                         <h4>NeoMars Tours</h4>
@@ -457,7 +457,7 @@
             <section id="article2" class="content-section">
                 <article>
                     <h2>Projecte 'Òrbita Freda': Com l'energia solar contínua i el zero absolut de l'espai van salvar la nostra xarxa.</h2>
-                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80" alt="Planeta Terra des de l'espai" class="hero-img">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80" alt="Planeta Terra des de l'espai">
                     <span class="image-caption">L'òrbita baixa terrestre (LEO) acull actualment la pràctica totalitat de la infraestructura de dades global.</span>
                     
                     <p>L'any 2038 va marcar un abans i un després en les telecomunicacions. Davant del col·lapse energètic i la crisi hídrica del 2032, la posada en marxa del Projecte 'Òrbita Freda' va salvar l'ecosistema digital traslladant els centres de dades a l'òrbita baixa terrestre (LEO).</p>
@@ -508,17 +508,17 @@
             <section id="article3" class="content-section">
                 <article>
                     <h2>Fita històrica aquest 2050: Es desconnecta l'últim macro-centre de dades terrestre.</h2>
-                    <img src="https://image.pollinations.ai/prompt/abandoned%20dusty%20old%20terrestrial%20data%20center%20server%20room%20dark%20cinematic?width=1200&height=675&nologo=true" alt="Antic centre de dades abandonat" class="hero-img">
+                    <img src="https://image.pollinations.ai/prompt/abandoned%20dusty%20old%20terrestrial%20data%20center%20server%20room%20dark%20cinematic?width=1200&height=675&nologo=true" alt="Antic centre de dades abandonat">
                     <span class="image-caption">Símbol de la fi d'una era: un antic macro-centre de dades terrestre, ara obsolet i desconnectat.</span>
                     
                     <p>Avui, el món tanca oficialment un capítol fosc de la seva història tecnològica. A les 12:00h s'ha apagat l'últim macro-centre de dades terrestre operatiu, posant fi a la migració de la xarxa global a l'òrbita baixa de la Terra (LEO). La transició ja és del 100%.</p>
                     
-                    <!-- Publicitat Integrada 2 -->
-                    <div class="cyber-ad" onclick="alert('Connexió Neural Establerta...')">
-                        <span class="ad-label">Publicitat Patrocinada</span>
+                    <!-- Publicitat Integrada -->
+                    <div class="newspaper-ad" onclick="alert('Connexió Neural Establerta...')">
+                        <span class="ad-label">Contingut Patrocinat</span>
                         <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?auto=format&fit=crop&w=250&q=80" alt="Cyber Implant">
                         <h4>NeuroLink v8.2</h4>
-                        <p>Connexió directa al servidor làser LEO. Descarrega coneixements mentre dorms. Ara sense mal de cap de descompressió.</p>
+                        <p>Connexió directa al servidor làser LEO. Descarrega coneixements mentre dorms. Ara amb filtres contra el soroll quàntic.</p>
                     </div>
 
                     <p>L'energia solar inesgotable i el fred absolut de l'espai han demostrat ser l'únic entorn viable per sostenir el nostre ritme tecnològic. Les antigues instal·lacions terrestres, avui obsoletes, començaran demà mateix el seu desmantellament per ser reconvertides en boscos i parcs nacionals.</p>
@@ -561,7 +561,7 @@
             <section id="article4" class="content-section">
                 <article>
                     <h2>Mecànics de dades a gravetat zero: Un dia a la vida dels tècnics de manteniment orbital.</h2>
-                    <img src="https://image.pollinations.ai/prompt/female%20astronaut%20mechanic%20repairing%20server%20rack%20in%20space%20zero%20gravity%20cinematic?width=1200&height=675&nologo=true" alt="Tècnica astronauta reparant servidors" class="hero-img">
+                    <img src="https://image.pollinations.ai/prompt/female%20astronaut%20mechanic%20repairing%20server%20rack%20in%20space%20zero%20gravity%20cinematic?width=1200&height=675&nologo=true" alt="Tècnica astronauta reparant servidors">
                     <span class="image-caption">La Laia, tècnica de manteniment de l'EMO-3, fotografiada durant la nostra entrevista mentre operava.</span>
                     <p>Són les 06:00 a l'Estació de Manteniment Orbital (EMO-3). La Laia es revisa l'arnès del seu vestit extravehicular abans de sortir per la resclosa. Ara, el "passadís" on treballa és el buit gèlid de l'espai, i el silenci és absolut.</p>
                     <p>La missió d'avui de la Laia i el seu equip és rutinària però vital: substituir tres mòduls d'emmagatzematge d'estat sòlid que s'han degradat a causa de la radiació solar i recalibrar un transmissor òptic làser. A gravetat zero, no pots deixar un tornavís sobre un servidor; qualsevol eina solta es pot convertir en un projectil letal.</p>
