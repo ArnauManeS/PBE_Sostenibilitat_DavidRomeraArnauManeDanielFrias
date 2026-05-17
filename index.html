@@ -133,34 +133,6 @@
             z-index: 1000;
         }
 
-        /* Publicitat Futurista (Costats) */
-        .cyber-ad {
-            position: fixed;
-            top: 150px;
-            width: 160px;
-            background: #0a0a0a;
-            color: #00ffcc;
-            font-family: 'Courier New', Courier, monospace;
-            padding: 15px;
-            border: 1px solid #00ffcc;
-            box-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
-            text-align: center;
-            z-index: 900;
-            display: none; /* Amagat per defecte, es mostra en pantalles grans */
-            cursor: pointer;
-        }
-        .cyber-ad:hover { background: #111; box-shadow: 0 0 15px rgba(0, 255, 204, 0.6); }
-        .cyber-ad h4 { font-size: 1rem; margin: 0 0 10px 0; text-transform: uppercase; color: #ff0055; }
-        .cyber-ad p { font-size: 0.85rem; margin: 0; line-height: 1.4; color: #ccc; }
-        .cyber-ad img { width: 100%; height: auto; margin-bottom: 10px; filter: grayscale(100%) sepia(100%) hue-rotate(130deg); }
-        
-        .ad-left { left: 20px; }
-        .ad-right { right: 40px; } /* Deixa espai per la barra de progrés */
-
-        @media (min-width: 1350px) {
-            .cyber-ad { display: block; }
-        }
-
         /* Capçalera del Diari */
         header {
             text-align: center;
@@ -218,7 +190,7 @@
         article { margin-bottom: 50px; }
         article h2 { font-size: 2.5rem; line-height: 1.2; margin-top: 0; margin-bottom: 20px; font-weight: normal; }
         article h3 { font-size: 1.8rem; margin-top: 30px;}
-        article img { width: 100%; height: auto; max-height: 500px; object-fit: cover; margin-bottom: 15px; border-bottom: 2px solid var(--border-color); }
+        article img.hero-img { width: 100%; height: auto; max-height: 500px; object-fit: cover; margin-bottom: 15px; border-bottom: 2px solid var(--border-color); }
         .image-caption { font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px; display: block; }
         article p { font-size: 1.15rem; text-align: left; margin-bottom: 20px; line-height: 1.7; }
         article ul { font-size: 1.15rem; margin-bottom: 20px; padding-left: 20px; }
@@ -231,31 +203,69 @@
             margin: 30px 0;
             font-family: var(--font-sans);
             font-size: 1rem;
+            clear: both;
         }
         .real-references h4 { margin-top: 0; color: var(--progress-blue); }
 
-        /* Xarxes socials final article */
-        .article-share {
+        /* Publicitat Integrada (Dins de l'article) */
+        .cyber-ad {
+            float: right;
+            width: 250px;
+            background: #0a0a0a;
+            color: #00ffcc;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 15px;
+            margin: 10px 0 20px 30px;
+            border: 1px solid #00ffcc;
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.15);
+            text-align: center;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .cyber-ad:hover { background: #111; box-shadow: 0 0 15px rgba(0, 255, 204, 0.4); }
+        .cyber-ad span.ad-label { display: block; font-size: 0.7rem; color: #555; text-align: right; margin-bottom: 5px; text-transform: uppercase; }
+        .cyber-ad h4 { font-size: 1.1rem; margin: 0 0 10px 0; text-transform: uppercase; color: #ff0055; }
+        .cyber-ad p { font-size: 0.9rem; margin: 0; line-height: 1.4; color: #ccc; }
+        .cyber-ad img { width: 100%; height: auto; margin-bottom: 10px; filter: grayscale(100%) sepia(100%) hue-rotate(130deg); border-radius: 2px; }
+
+        /* Tira d'accions (Like, Guardar, Compartir...) */
+        .action-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 15px 0;
+            margin: 30px 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            font-family: var(--font-sans);
+            clear: both;
+        }
+        .action-strip button {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1rem;
+            cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 15px;
-            padding: 20px 0;
-            border-top: 1px solid var(--border-color);
-            margin-top: 40px;
-            font-family: var(--font-sans);
-            font-size: 0.95rem;
-            color: var(--text-muted);
+            gap: 8px;
+            font-weight: bold;
+            transition: all 0.2s;
+            padding: 5px 10px;
+            border-radius: 4px;
         }
-        .article-share a {
-            color: var(--text-main);
-            font-size: 1.4rem;
-            transition: color 0.2s;
-            text-decoration: none;
+        .action-strip button:hover {
+            color: var(--accent-color);
+            background-color: #f0f0f0;
         }
-        .article-share a:hover { color: var(--accent-color); }
+        .action-strip button.like-btn:hover {
+            color: #e60000;
+            background-color: #ffe6e6;
+        }
+        .action-strip button i { font-size: 1.2rem; }
 
         /* Secció Comentaris */
-        .comments-section { margin-top: 20px; font-family: var(--font-sans); }
+        .comments-section { margin-top: 20px; font-family: var(--font-sans); clear: both; }
         .comments-section h3 { font-size: 1.4rem; margin-bottom: 20px; }
         .comment { display: flex; gap: 15px; margin-bottom: 25px; }
         .comment-avatar { width: 45px; height: 45px; border-radius: 50%; background-color: var(--accent-color); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; flex-shrink: 0; }
@@ -271,6 +281,7 @@
             border-left: 4px solid var(--accent-color);
             cursor: pointer;
             transition: background-color 0.2s;
+            clear: both;
         }
         .next-article-box:hover { background-color: #e9e9e9; }
         .next-article-box h4 { margin: 0 0 10px 0; font-family: var(--font-sans); color: var(--accent-color); text-transform: uppercase; font-size: 0.85rem; }
@@ -298,25 +309,14 @@
             #menu-toggle { top: 15px; left: 15px; }
             #home-btn { top: 21px; left: 60px; }
             header h1 { font-size: 2.5rem; }
+            .cyber-ad { float: none; width: 100%; margin: 20px 0; }
             .comment { flex-direction: column; }
             .comment-avatar { margin-bottom: 10px; }
+            .action-strip { justify-content: center; }
         }
     </style>
 </head>
 <body>
-
-    <!-- ADS FUTURISTES -->
-    <div class="cyber-ad ad-left" onclick="alert('Enllaç HoloNet redirigint...')">
-        <img src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?auto=format&fit=crop&w=200&q=80" alt="Mart">
-        <h4>NeoMars Tours</h4>
-        <p>Fart del fred orbital? Reserva el teu viatge a les cúpules tropicals de Mart. Des de 5.000 Crèdits.</p>
-    </div>
-
-    <div class="cyber-ad ad-right" onclick="alert('Connexió Neural Establerta...')">
-        <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?auto=format&fit=crop&w=200&q=80" alt="Cyber Implant">
-        <h4>NeuroLink v8.2</h4>
-        <p>Connexió directa al servidor làser LEO. Descarrega coneixements mentre dorms. Ara sense mal de cap.</p>
-    </div>
 
     <!-- BOTONS CAPÇALERA -->
     <button id="menu-toggle" aria-label="Obrir menú" onclick="toggleMenu()">☰</button>
@@ -364,7 +364,7 @@
                 <div class="home-grid">
                     <article class="hero-article">
                         <a onclick="showSection('article1')">
-                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80" alt="Servidors sobreescalfats">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80" alt="Servidors sobreescalfats" class="hero-img">
                             <h2>La Gran Crisi del 2032: Quan el refredament dels servidors consumia més aigua que l'agricultura mundial.</h2>
                         </a>
                         <p class="excerpt">La societat digital va xocar de front amb la realitat biològica del planeta. El consum excessiu dels antics centres de dades terrestres va arribar a assecar conques hidrogràfiques senceres, obligant a un canvi de paradigma radical cap a l'espai.</p>
@@ -402,17 +402,28 @@
             <section id="article1" class="content-section">
                 <article>
                     <h2>La Gran Crisi del 2032: Quan el refredament dels servidors consumia més aigua que l'agricultura mundial.</h2>
-                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80" alt="Servidors sobreescalfats">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80" alt="Servidors sobreescalfats" class="hero-img">
                     <span class="image-caption">Imatge d'arxiu d'un macro-centre de dades terrestre durant els episodis de sobreescalfament pre-crisi.</span>
+                    
                     <p>L'any 2032, la societat digital va xocar de front amb la realitat biològica del planeta. El consum excessiu dels centres de dades terrestres va arribar al seu punt de no retorn. Ja la dècada anterior s'havien vist els primers senyals d'alerta: l'any 2025 el Regne Unit va arribar a demanar a la població que esborrés correus electrònics per estalviar aigua durant una greu sequera. No obstant això, el veritable col·lapse trigaria uns anys més a esclatar.</p>
+                    
+                    <!-- Publicitat Integrada 1 -->
+                    <div class="cyber-ad" onclick="alert('Enllaç HoloNet redirigint...')">
+                        <span class="ad-label">Publicitat Patrocinada</span>
+                        <img src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?auto=format&fit=crop&w=250&q=80" alt="Mart">
+                        <h4>NeoMars Tours</h4>
+                        <p>Fart del fred orbital? Reserva el teu viatge a les cúpules tropicals de Mart. Des de 5.000 Crèdits interplanetaris.</p>
+                    </div>
+
                     <p>L'any 2032, l'aigua dolça purificada necessària per als complexos sistemes de refrigeració líquida va superar el consum hídric de tota l'agricultura mundial. Conques hidrogràfiques senceres s'esgotaven només per evitar que els servidors es fonguessin. Aquesta situació va generar una crisi social sense precedents.</p>
                     <p>Va ser aquest escenari límit el que va forçar la indústria a prendre una decisió dràstica i mirar cap al cel. Si la Terra no podia suportar la calor i la set de la nostra activitat digital, la solució passava per l'òrbita baixa terrestre (LEO). La crisi del 2032 va ser el catalitzador que va iniciar l'èxode de les dades cap a l'espai, aprofitant el fred del buit còsmic i la llum solar ininterrompuda.</p>
                     
-                    <!-- Compartir xarxes -->
-                    <div class="article-share">
-                        <strong>Transmetre a l'Holoxarxa:</strong> 
-                        <a href="#" aria-label="Compartir a X"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="#" aria-label="Compartir a Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <!-- Tira d'accions -->
+                    <div class="action-strip">
+                        <button class="like-btn"><i class="fa-regular fa-heart"></i> 14.2k</button>
+                        <button><i class="fa-regular fa-comment"></i> 2</button>
+                        <button><i class="fa-regular fa-bookmark"></i> Guardar</button>
+                        <button><i class="fa-solid fa-share-nodes"></i> Compartir</button>
                     </div>
 
                     <!-- Comentaris Article 1 -->
@@ -446,14 +457,14 @@
             <section id="article2" class="content-section">
                 <article>
                     <h2>Projecte 'Òrbita Freda': Com l'energia solar contínua i el zero absolut de l'espai van salvar la nostra xarxa.</h2>
-                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80" alt="Planeta Terra des de l'espai">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80" alt="Planeta Terra des de l'espai" class="hero-img">
                     <span class="image-caption">L'òrbita baixa terrestre (LEO) acull actualment la pràctica totalitat de la infraestructura de dades global.</span>
                     
                     <p>L'any 2038 va marcar un abans i un després en les telecomunicacions. Davant del col·lapse energètic i la crisi hídrica del 2032, la posada en marxa del Projecte 'Òrbita Freda' va salvar l'ecosistema digital traslladant els centres de dades a l'òrbita baixa terrestre (LEO).</p>
                     
                     <div class="real-references">
                         <h4>Nota Científica de l'Arxiu: Els orígens de la idea (2022)</h4>
-                        <p>Històricament, la viabilitat de posar centres de dades a l'espai ja es va plantejar de forma seriosa l'any 2022. La Comissió Europea va encarregar l'estudi <strong>ASCEND (Advanced Space Cloud for European Net zero emission and Data sovereignty)</strong> a Thales Alenia Space per estudiar si l'energia solar orbital (capaç de produir sense nits ni núvols) compensava la petjada de carboni dels llançaments de coets.</p>
+                        <p>Històricament, la viabilitat de posar centres de dades a l'espai ja es va plantejar de forma seriosa l'any 2022. La Comissió Europea va encarregar l'estudi <strong>ASCEND (Advanced Space Cloud for European Net zero emission and Data sovereignty)</strong> a Thales Alenia Space per estudiar si l'energia solar orbital compensava la petjada de carboni dels llançaments de coets.</p>
                     </div>
 
                     <p>Aquesta arquitectura històrica es va basar en tres pilars fonamentals que van canviar el paradigma tecnològic:</p>
@@ -466,11 +477,12 @@
 
                     <p>Avui, l'any 2050, el "núvol" fa honor al seu nom i flota literalment sobre els nostres caps.</p>
                     
-                    <!-- Compartir xarxes -->
-                    <div class="article-share">
-                        <strong>Transmetre a l'Holoxarxa:</strong> 
-                        <a href="#" aria-label="Compartir a X"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="#" aria-label="Compartir a Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <!-- Tira d'accions -->
+                    <div class="action-strip">
+                        <button class="like-btn"><i class="fa-regular fa-heart"></i> 8.1k</button>
+                        <button><i class="fa-regular fa-comment"></i> 1</button>
+                        <button><i class="fa-regular fa-bookmark"></i> Guardar</button>
+                        <button><i class="fa-solid fa-share-nodes"></i> Compartir</button>
                     </div>
 
                     <div class="comments-section">
@@ -496,16 +508,27 @@
             <section id="article3" class="content-section">
                 <article>
                     <h2>Fita històrica aquest 2050: Es desconnecta l'últim macro-centre de dades terrestre.</h2>
-                    <img src="https://image.pollinations.ai/prompt/abandoned%20dusty%20old%20terrestrial%20data%20center%20server%20room%20dark%20cinematic?width=1200&height=675&nologo=true" alt="Antic centre de dades abandonat">
+                    <img src="https://image.pollinations.ai/prompt/abandoned%20dusty%20old%20terrestrial%20data%20center%20server%20room%20dark%20cinematic?width=1200&height=675&nologo=true" alt="Antic centre de dades abandonat" class="hero-img">
                     <span class="image-caption">Símbol de la fi d'una era: un antic macro-centre de dades terrestre, ara obsolet i desconnectat.</span>
+                    
                     <p>Avui, el món tanca oficialment un capítol fosc de la seva història tecnològica. A les 12:00h s'ha apagat l'últim macro-centre de dades terrestre operatiu, posant fi a la migració de la xarxa global a l'òrbita baixa de la Terra (LEO). La transició ja és del 100%.</p>
+                    
+                    <!-- Publicitat Integrada 2 -->
+                    <div class="cyber-ad" onclick="alert('Connexió Neural Establerta...')">
+                        <span class="ad-label">Publicitat Patrocinada</span>
+                        <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?auto=format&fit=crop&w=250&q=80" alt="Cyber Implant">
+                        <h4>NeuroLink v8.2</h4>
+                        <p>Connexió directa al servidor làser LEO. Descarrega coneixements mentre dorms. Ara sense mal de cap de descompressió.</p>
+                    </div>
+
                     <p>L'energia solar inesgotable i el fred absolut de l'espai han demostrat ser l'únic entorn viable per sostenir el nostre ritme tecnològic. Les antigues instal·lacions terrestres, avui obsoletes, començaran demà mateix el seu desmantellament per ser reconvertides en boscos i parcs nacionals.</p>
                     
-                    <!-- Compartir xarxes -->
-                    <div class="article-share">
-                        <strong>Transmetre a l'Holoxarxa:</strong> 
-                        <a href="#" aria-label="Compartir a X"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="#" aria-label="Compartir a Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <!-- Tira d'accions -->
+                    <div class="action-strip">
+                        <button class="like-btn"><i class="fa-regular fa-heart"></i> 25k</button>
+                        <button><i class="fa-regular fa-comment"></i> 2</button>
+                        <button><i class="fa-regular fa-bookmark"></i> Guardar</button>
+                        <button><i class="fa-solid fa-share-nodes"></i> Compartir</button>
                     </div>
 
                     <div class="comments-section">
@@ -538,17 +561,18 @@
             <section id="article4" class="content-section">
                 <article>
                     <h2>Mecànics de dades a gravetat zero: Un dia a la vida dels tècnics de manteniment orbital.</h2>
-                    <img src="https://image.pollinations.ai/prompt/female%20astronaut%20mechanic%20repairing%20server%20rack%20in%20space%20zero%20gravity%20cinematic?width=1200&height=675&nologo=true" alt="Tècnica astronauta reparant servidors">
+                    <img src="https://image.pollinations.ai/prompt/female%20astronaut%20mechanic%20repairing%20server%20rack%20in%20space%20zero%20gravity%20cinematic?width=1200&height=675&nologo=true" alt="Tècnica astronauta reparant servidors" class="hero-img">
                     <span class="image-caption">La Laia, tècnica de manteniment de l'EMO-3, fotografiada durant la nostra entrevista mentre operava.</span>
                     <p>Són les 06:00 a l'Estació de Manteniment Orbital (EMO-3). La Laia es revisa l'arnès del seu vestit extravehicular abans de sortir per la resclosa. Ara, el "passadís" on treballa és el buit gèlid de l'espai, i el silenci és absolut.</p>
                     <p>La missió d'avui de la Laia i el seu equip és rutinària però vital: substituir tres mòduls d'emmagatzematge d'estat sòlid que s'han degradat a causa de la radiació solar i recalibrar un transmissor òptic làser. A gravetat zero, no pots deixar un tornavís sobre un servidor; qualsevol eina solta es pot convertir en un projectil letal.</p>
                     <p>"El veritable repte és aconseguir canviar un xip mil·limètric amb guants de pressió, mentre intentes no distreure't mirant com passen els huracans sobre l'Atlàntic just sota els teus peus". Gràcies a "mecànics orbitals" com ella, la humanitat pot continuar gestionant l'economia global sense gastar aigua.</p>
                     
-                    <!-- Compartir xarxes -->
-                    <div class="article-share">
-                        <strong>Transmetre a l'Holoxarxa:</strong> 
-                        <a href="#" aria-label="Compartir a X"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="#" aria-label="Compartir a Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <!-- Tira d'accions -->
+                    <div class="action-strip">
+                        <button class="like-btn"><i class="fa-regular fa-heart"></i> 5.6k</button>
+                        <button><i class="fa-regular fa-comment"></i> 3</button>
+                        <button><i class="fa-regular fa-bookmark"></i> Guardar</button>
+                        <button><i class="fa-solid fa-share-nodes"></i> Compartir</button>
                     </div>
 
                     <div class="comments-section">
