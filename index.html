@@ -45,6 +45,25 @@
             color: var(--accent-hover);
         }
 
+        /* Botó Portada */
+        #home-btn {
+            position: fixed;
+            top: 28px;
+            left: 70px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-main);
+            cursor: pointer;
+            z-index: 1001;
+            transition: color 0.2s;
+            text-decoration: none;
+        }
+
+        #home-btn:hover {
+            color: var(--accent-hover);
+        }
+
         /* Menú Lateral Ocult (Off-canvas) */
         .side-menu {
             position: fixed;
@@ -289,6 +308,40 @@
             margin-bottom: 10px;
         }
 
+        /* Resum del següent article */
+        .next-article-box {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-left: 4px solid var(--accent-color);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .next-article-box:hover {
+            background-color: #e9e9e9;
+        }
+
+        .next-article-box h4 {
+            margin: 0 0 10px 0;
+            font-family: var(--font-sans);
+            color: var(--accent-color);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .next-article-box h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .next-article-box p {
+            font-size: 1rem;
+            margin: 0;
+            color: var(--text-muted);
+        }
+
         /* Peu de Pàgina (Footer) */
         footer {
             margin-top: 60px;
@@ -340,6 +393,10 @@
                 top: 15px;
                 left: 15px;
             }
+            #home-btn {
+                top: 18px;
+                left: 60px;
+            }
             header h1 {
                 font-size: 2.5rem;
             }
@@ -348,8 +405,9 @@
 </head>
 <body>
 
-    <!-- BOTÓ MENÚ HAMBURGUESA -->
+    <!-- BOTÓ MENÚ HAMBURGUESA I BOTÓ PORTADA -->
     <button id="menu-toggle" aria-label="Obrir menú" onclick="toggleMenu()">☰</button>
+    <button id="home-btn" aria-label="Anar a la portada" title="Anar a la portada" onclick="showSection('home')">🏠</button>
 
     <!-- MENÚ LATERAL OCULT -->
     <nav id="side-menu" class="side-menu">
@@ -427,6 +485,13 @@
                     <p>L'any 2032, la societat digital va xocar de front amb la realitat biològica del planeta. El consum excessiu dels centres de dades terrestres va arribar al seu punt de no retorn. Ja la dècada anterior s'havien vist els primers senyals d'alerta: l'any 2025 el Regne Unit va arribar a demanar a la població que esborrés correus electrònics per estalviar aigua durant una greu sequera. No obstant això, el veritable col·lapse trigaria uns anys més a esclatar. Impulsats per l'entrenament massiu de models d'Intel·ligència Artificial i la digitalització total, els "núvols" -que la gent va descobrir que de núvols no en tenien res - es van convertir en forats negres de recursos.</p>
                     <p>L'any 2032, l'aigua dolça purificada necessària per als complexos sistemes de refrigeració líquida va superar el consum hídric de tota l'agricultura mundial. Conques hidrogràfiques senceres s'esgotaven només per evitar que els servidors es fonguessin. Aquesta situació va generar una crisi social sense precedents. Les comunitats locals es van quedar sense aigua per als cultius i per al consum humà, mentre les grans corporacions tecnològiques mantenien actius els seus processos massius de dades. El mite de la tecnologia invisible i neta es va esfondrar definitivament.</p>
                     <p>Va ser aquest escenari límit el que va forçar la indústria a prendre una decisió dràstica i mirar cap al cel. Si la Terra no podia suportar la calor i la set de la nostra activitat digital, la solució passava per l'òrbita baixa terrestre (LEO). La crisi del 2032 va ser el catalitzador que va iniciar l'èxode de les dades cap a l'espai, aprofitant el fred del buit còsmic i la llum solar ininterrompuda per tancar, per fi, l'aixeta a la Terra. Avui, al 2050, ho recordem com el moment en què gairebé morim d'èxit digital.</p>
+                    
+                    <!-- Suggeriment proper article -->
+                    <div class="next-article-box" onclick="showSection('article2')">
+                        <h4>Següent Article</h4>
+                        <h3>Projecte 'Òrbita Freda'</h3>
+                        <p>Descobreix com l'energia solar contínua i el zero absolut de l'espai van salvar la nostra xarxa i van fer possible l'èxode.</p>
+                    </div>
                 </article>
             </section>
 
@@ -449,6 +514,13 @@
                     <p>L'èxode no va estar exempt de dificultats. Durant gairebé una dècada, milers de llançaments de coets de càrrega súper-pesant i totalment reutilitzables van transportar l'esquelet d'aquests macro-centres. Els enginyers van haver de superar reptes formidables, com ara desenvolupar blindatges de kevlar dinàmic per protegir els xips dels micrometeorits, i implementar camps electromagnètics locals per desviar la radiació solar letal.</p>
                     
                     <p>Avui, l'any 2050, el "núvol" fa honor al seu nom i flota literalment sobre els nostres caps. Connectats per aquestes xarxes de llum invisibles, els centres orbitals ens han permès seguir expandint les fronteres de la tecnologia, operant algorismes quàntics en temps real i, el més important de tot, permetent que el nostre planeta recuperi el seu ritme biològic natural.</p>
+                    
+                    <!-- Suggeriment proper article -->
+                    <div class="next-article-box" onclick="showSection('article3')">
+                        <h4>Següent Article</h4>
+                        <h3>Fita històrica: Es desconnecta l'últim macro-centre terrestre</h3>
+                        <p>Viu el moment simbòlic en què s'apaguen definitivament els servidors de Terra per donar pas a la regeneració natural.</p>
+                    </div>
                 </article>
             </section>
 
@@ -459,6 +531,13 @@
                     <span class="image-caption">Símbol de la fi d'una era: un antic macro-centre de dades terrestre, ara obsolet i desconnectat.</span>
                     <p>Avui, el món tanca oficialment un capítol fosc de la seva història tecnològica. A les 12:00h s'ha apagat l'últim macro-centre de dades terrestre operatiu, posant fi a la migració de la xarxa global a l'òrbita baixa de la Terra (LEO). La transició ja és del 100%. Aquesta fita històrica culmina el procés de salvació ecològica iniciat després de les grans crisis hídriques i energètiques de la dècada dels 30. Enrere queden els temps on mantenir actiu el "núvol" significava sacrificar l'aigua dolça de poblacions senceres i disparar el consum elèctric global. Tot el pes de la Intel·ligència Artificial i l'emmagatzematge digital recau ara sobre la nostra constel·lació orbital.</p>
                     <p>L'energia solar inesgotable i el fred absolut de l'espai han demostrat ser l'únic entorn viable per sostenir el nostre ritme tecnològic. Les antigues instal·lacions terrestres, avui obsoletes, començaran demà mateix el seu desmantellament per ser reconvertides en boscos i parcs nacionals. Un recordatori físic que la tecnologia només pot avançar si respecta els límits biològics del nostre planeta.</p>
+                    
+                    <!-- Suggeriment proper article -->
+                    <div class="next-article-box" onclick="showSection('article4')">
+                        <h4>Següent Article</h4>
+                        <h3>Mecànics de dades a gravetat zero</h3>
+                        <p>Descobreix com és un dia en la vida de la Laia, una tècnica encarregada del manteniment orbital a 400 km d'altura.</p>
+                    </div>
                 </article>
             </section>
 
@@ -470,6 +549,13 @@
                     <p>Són les 06:00 a l'Estació de Manteniment Orbital (EMO-3). La Laia es revisa l'arnès del seu vestit extravehicular abans de sortir per la resclosa. Ja no existeixen els terres falsos, els cables enredats ni els passadissos eixordadors plens d'aire condicionat dels antics centres de dades terrestres. Ara, el "passadís" on treballa és el buit gèlid de l'espai, i el silenci és absolut. Ser tècnic de sistemes l'any 2050 ja no implica lluitar contra la pols o els problemes de sobreescalfament. A 400 quilòmetres sobre la superfície de la Terra, la temperatura dels servidors s'autoregula gràcies al fred cosmic.</p>
                     <p>La missió d'avui de la Laia i el seu equip és rutinària però vital: substituir tres mòduls d'emmagatzematge d'estat sòlid que s'han degradat a causa de la radiació solar i recalibrar un transmissor òptic làser que connecta el clúster del sud d'Europa amb el d'Amèrica. El treball és lent i metòdic. A gravetat zero, no pots deixar un tornavís sobre un servidor; qualsevol eina o component solt es pot convertir en un projectil letal per als immensos panells solars que alimenten la infraestructura. Cada eina està lligada magnèticament al vestit, i els tècnics es desplacen pel fuselatge exterior del macro-servidor amb moviments molt calculats, impulsant-se suaument amb petits raigs de gas comprimit.</p>
                     <p>"El més difícil ja no és diagnosticar per què falla una placa base", comenta la Laia a través de l'enllaç de ràdio amb el centre de control terrestre. "El veritable repte és aconseguir canviar un xip mil·limètric amb guants de pressió, mentre intentes no distreure't mirant com passen els huracans sobre l'Atlàntic just sota els teus peus". Quan acaba el seu torn de vuit hores i torna a entrar a l'estació pressuritzada, deixa enrere milers de terabytes de dades fluint ininterrompudament cap a la Terra. Gràcies a "mecànics orbitals" com ella, la humanitat pot continuar entrenant models de llenguatge avançats, operant hospitals a distància i gestionant l'economia global sense gastar ni una sola gota d'aigua de les nostres reserves terrestres. Són els guardians invisibles del nostre núvol que, per fi, flota literalment entre les estrelles.</p>
+                    
+                    <!-- Suggeriment tornar a portada -->
+                    <div class="next-article-box" onclick="showSection('home')">
+                        <h4>Fi del Dossier</h4>
+                        <h3>Tornar a la Portada</h3>
+                        <p>Repassa tots els continguts de l'edició especial de L'Èxode Digital.</p>
+                    </div>
                 </article>
             </section>
 
