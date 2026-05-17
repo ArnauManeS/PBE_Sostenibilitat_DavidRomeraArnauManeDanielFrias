@@ -6,7 +6,6 @@
     <title>Cròniques de l'Òrbita Freda</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Estil periodístic tipus La Vanguardia / Diari Clàssic */
         :root {
             --text-main: #111;
             --text-muted: #555;
@@ -26,9 +25,10 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* Botó Menú Desplegable (Hamburguesa) */
+        /* Botons capçalera */
         #menu-toggle {
             position: fixed;
             top: 25px;
@@ -41,12 +41,8 @@
             z-index: 1001;
             transition: color 0.2s;
         }
+        #menu-toggle:hover { color: var(--accent-hover); }
 
-        #menu-toggle:hover {
-            color: var(--accent-hover);
-        }
-
-        /* Botó Portada Minimalista */
         #home-btn {
             position: fixed;
             top: 31px;
@@ -60,12 +56,9 @@
             display: flex;
             align-items: center;
         }
+        #home-btn:hover { color: var(--accent-hover); }
 
-        #home-btn:hover {
-            color: var(--accent-hover);
-        }
-
-        /* Menú Lateral Ocult (Off-canvas) */
+        /* Menú Lateral */
         .side-menu {
             position: fixed;
             top: 0;
@@ -80,11 +73,7 @@
             font-family: var(--font-sans);
             overflow-y: auto;
         }
-
-        .side-menu.open {
-            left: 0;
-        }
-
+        .side-menu.open { left: 0; }
         .close-btn {
             position: absolute;
             top: 20px;
@@ -95,7 +84,6 @@
             cursor: pointer;
             color: var(--text-muted);
         }
-
         .side-menu h3 {
             font-size: 1.1rem;
             text-transform: uppercase;
@@ -103,17 +91,8 @@
             padding-bottom: 5px;
             margin-top: 30px;
         }
-
-        .side-menu ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .side-menu li {
-            border-bottom: 1px solid var(--border-color);
-        }
-
+        .side-menu ul { list-style: none; padding: 0; margin: 0; }
+        .side-menu li { border-bottom: 1px solid var(--border-color); }
         .side-menu a {
             display: block;
             padding: 12px 0;
@@ -124,10 +103,7 @@
             transition: color 0.2s;
             cursor: pointer;
         }
-
-        .side-menu a:hover, .side-menu a.active-link {
-            color: var(--accent-hover);
-        }
+        .side-menu a:hover, .side-menu a.active-link { color: var(--accent-hover); }
 
         /* Barra de progrés */
         #progress-container {
@@ -140,14 +116,12 @@
             z-index: 1000;
             display: none; 
         }
-
         #progress-bar {
             width: 100%;
             height: 0%;
             background-color: var(--progress-blue);
             transition: height 0.1s ease-out;
         }
-
         #progress-text {
             position: fixed;
             top: 20px;
@@ -159,6 +133,34 @@
             z-index: 1000;
         }
 
+        /* Publicitat Futurista (Costats) */
+        .cyber-ad {
+            position: fixed;
+            top: 150px;
+            width: 160px;
+            background: #0a0a0a;
+            color: #00ffcc;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 15px;
+            border: 1px solid #00ffcc;
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
+            text-align: center;
+            z-index: 900;
+            display: none; /* Amagat per defecte, es mostra en pantalles grans */
+            cursor: pointer;
+        }
+        .cyber-ad:hover { background: #111; box-shadow: 0 0 15px rgba(0, 255, 204, 0.6); }
+        .cyber-ad h4 { font-size: 1rem; margin: 0 0 10px 0; text-transform: uppercase; color: #ff0055; }
+        .cyber-ad p { font-size: 0.85rem; margin: 0; line-height: 1.4; color: #ccc; }
+        .cyber-ad img { width: 100%; height: auto; margin-bottom: 10px; filter: grayscale(100%) sepia(100%) hue-rotate(130deg); }
+        
+        .ad-left { left: 20px; }
+        .ad-right { right: 40px; } /* Deixa espai per la barra de progrés */
+
+        @media (min-width: 1350px) {
+            .cyber-ad { display: block; }
+        }
+
         /* Capçalera del Diari */
         header {
             text-align: center;
@@ -167,7 +169,6 @@
             border-top: 12px solid var(--accent-color);
             margin-bottom: 30px;
         }
-
         header h1 {
             font-size: 3.5rem;
             margin: 0;
@@ -175,7 +176,6 @@
             letter-spacing: -1px;
             text-transform: uppercase;
         }
-
         .date-bar {
             font-family: var(--font-sans);
             font-size: 0.85rem;
@@ -194,122 +194,36 @@
             padding: 0 40px;
             min-height: calc(100vh - 350px);
         }
-
         .content-section {
             display: none;
             animation: fadeIn 0.5s ease;
         }
-
-        .content-section.active {
-            display: block;
-        }
-
+        .content-section.active { display: block; }
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
 
         /* PORTADA ESTILS */
-        .home-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-
-        .hero-article h2 {
-            font-size: 2.8rem;
-            margin-top: 15px;
-            margin-bottom: 10px;
-            line-height: 1.1;
-        }
-
-        .hero-article p.excerpt {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-        }
-
-        .secondary-articles {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            border-top: 2px solid var(--border-color);
-            padding-top: 30px;
-        }
-
-        .card h3 {
-            font-size: 1.4rem;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            line-height: 1.2;
-        }
-
-        .card p {
-            font-size: 1rem;
-            color: var(--text-muted);
-            margin-top: 0;
-        }
-
-        .home-grid a, .secondary-articles a {
-            color: var(--text-main);
-            text-decoration: none;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .home-grid a:hover, .secondary-articles a:hover {
-            color: var(--accent-hover);
-        }
+        .home-grid { display: grid; grid-template-columns: 1fr; gap: 40px; margin-bottom: 50px; }
+        .hero-article h2 { font-size: 2.8rem; margin-top: 15px; margin-bottom: 10px; line-height: 1.1; }
+        .hero-article p.excerpt { font-size: 1.2rem; color: var(--text-muted); }
+        .secondary-articles { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; border-top: 2px solid var(--border-color); padding-top: 30px; }
+        .card h3 { font-size: 1.4rem; margin-top: 10px; margin-bottom: 10px; line-height: 1.2; }
+        .card p { font-size: 1rem; color: var(--text-muted); margin-top: 0; }
+        .home-grid a, .secondary-articles a { color: var(--text-main); text-decoration: none; cursor: pointer; transition: color 0.2s; }
+        .home-grid a:hover, .secondary-articles a:hover { color: var(--accent-hover); }
 
         /* ARTICLES ESTILS */
-        article {
-            margin-bottom: 50px;
-        }
+        article { margin-bottom: 50px; }
+        article h2 { font-size: 2.5rem; line-height: 1.2; margin-top: 0; margin-bottom: 20px; font-weight: normal; }
+        article h3 { font-size: 1.8rem; margin-top: 30px;}
+        article img { width: 100%; height: auto; max-height: 500px; object-fit: cover; margin-bottom: 15px; border-bottom: 2px solid var(--border-color); }
+        .image-caption { font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px; display: block; }
+        article p { font-size: 1.15rem; text-align: left; margin-bottom: 20px; line-height: 1.7; }
+        article ul { font-size: 1.15rem; margin-bottom: 20px; padding-left: 20px; }
+        article li { margin-bottom: 10px; }
 
-        article h2 {
-            font-size: 2.5rem;
-            line-height: 1.2;
-            margin-top: 0;
-            margin-bottom: 20px;
-            color: var(--text-main);
-            font-weight: normal;
-        }
-
-        article img {
-            width: 100%;
-            height: auto;
-            max-height: 500px;
-            object-fit: cover;
-            margin-bottom: 15px;
-            border-bottom: 2px solid var(--border-color);
-        }
-
-        .image-caption {
-            font-family: var(--font-sans);
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 25px;
-            display: block;
-        }
-
-        article p {
-            font-size: 1.15rem;
-            text-align: left;
-            margin-bottom: 20px;
-            line-height: 1.7;
-        }
-
-        article ul {
-            font-size: 1.15rem;
-            margin-bottom: 20px;
-            padding-left: 20px;
-        }
-
-        article li {
-            margin-bottom: 10px;
-        }
-
-        /* Referències Reals */
         .real-references {
             background-color: #f0f7fa;
             border-left: 5px solid var(--progress-blue);
@@ -318,64 +232,36 @@
             font-family: var(--font-sans);
             font-size: 1rem;
         }
+        .real-references h4 { margin-top: 0; color: var(--progress-blue); }
 
-        .real-references h4 {
-            margin-top: 0;
-            color: var(--progress-blue);
-        }
-
-        /* Secció Comentaris */
-        .comments-section {
-            margin-top: 50px;
-            border-top: 2px solid var(--border-color);
-            padding-top: 30px;
-            font-family: var(--font-sans);
-        }
-
-        .comments-section h3 {
-            font-size: 1.4rem;
-            margin-bottom: 20px;
-        }
-
-        .comment {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-
-        .comment-avatar {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background-color: var(--accent-color);
-            color: white;
+        /* Xarxes socials final article */
+        .article-share {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-
-        .comment-body {
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 8px;
-            flex-grow: 1;
-        }
-
-        .comment-author {
-            font-weight: bold;
-            margin-bottom: 5px;
-            font-size: 0.95rem;
-            color: var(--text-main);
-        }
-
-        .comment-text {
+            gap: 15px;
+            padding: 20px 0;
+            border-top: 1px solid var(--border-color);
+            margin-top: 40px;
+            font-family: var(--font-sans);
             font-size: 0.95rem;
             color: var(--text-muted);
-            margin: 0;
         }
+        .article-share a {
+            color: var(--text-main);
+            font-size: 1.4rem;
+            transition: color 0.2s;
+            text-decoration: none;
+        }
+        .article-share a:hover { color: var(--accent-color); }
+
+        /* Secció Comentaris */
+        .comments-section { margin-top: 20px; font-family: var(--font-sans); }
+        .comments-section h3 { font-size: 1.4rem; margin-bottom: 20px; }
+        .comment { display: flex; gap: 15px; margin-bottom: 25px; }
+        .comment-avatar { width: 45px; height: 45px; border-radius: 50%; background-color: var(--accent-color); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; flex-shrink: 0; }
+        .comment-body { background-color: #f9f9f9; padding: 15px; border-radius: 8px; flex-grow: 1; }
+        .comment-author { font-weight: bold; margin-bottom: 5px; font-size: 0.95rem; color: var(--text-main); }
+        .comment-text { font-size: 0.95rem; color: var(--text-muted); margin: 0; }
 
         /* Resum del següent article */
         .next-article-box {
@@ -386,33 +272,12 @@
             cursor: pointer;
             transition: background-color 0.2s;
         }
+        .next-article-box:hover { background-color: #e9e9e9; }
+        .next-article-box h4 { margin: 0 0 10px 0; font-family: var(--font-sans); color: var(--accent-color); text-transform: uppercase; font-size: 0.85rem; }
+        .next-article-box h3 { margin: 0 0 10px 0; font-size: 1.5rem; color: var(--text-main); }
+        .next-article-box p { font-size: 1rem; margin: 0; color: var(--text-muted); font-family: var(--font-serif); }
 
-        .next-article-box:hover {
-            background-color: #e9e9e9;
-        }
-
-        .next-article-box h4 {
-            margin: 0 0 10px 0;
-            font-family: var(--font-sans);
-            color: var(--accent-color);
-            text-transform: uppercase;
-            font-size: 0.85rem;
-        }
-
-        .next-article-box h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.5rem;
-            color: var(--text-main);
-        }
-
-        .next-article-box p {
-            font-size: 1rem;
-            margin: 0;
-            color: var(--text-muted);
-            font-family: var(--font-serif);
-        }
-
-        /* Peu de Pàgina (Footer) */
+        /* Peu de Pàgina */
         footer {
             margin-top: 60px;
             padding: 40px 20px;
@@ -421,39 +286,12 @@
             text-align: center;
             font-family: var(--font-sans);
         }
-
-        .footer-socials a {
-            display: inline-block;
-            margin: 0 15px;
-            color: var(--text-main);
-            text-decoration: none;
-            font-size: 1.5rem;
-            transition: color 0.2s;
-        }
-
-        .footer-socials a:hover {
-            color: var(--accent-hover);
-        }
-
-        .footer-links {
-            margin: 20px 0;
-            font-size: 0.9rem;
-        }
-
-        .footer-links a {
-            color: var(--text-main);
-            text-decoration: none;
-            margin: 0 15px;
-        }
-
-        .footer-links a:hover {
-            text-decoration: underline;
-        }
-
-        .footer-copyright {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
+        .footer-socials a { display: inline-block; margin: 0 15px; color: var(--text-main); text-decoration: none; font-size: 1.5rem; transition: color 0.2s; }
+        .footer-socials a:hover { color: var(--accent-hover); }
+        .footer-links { margin: 20px 0; font-size: 0.9rem; }
+        .footer-links a { color: var(--text-main); text-decoration: none; margin: 0 15px; cursor: pointer; }
+        .footer-links a:hover { text-decoration: underline; }
+        .footer-copyright { font-size: 0.85rem; color: var(--text-muted); }
 
         @media (max-width: 768px) {
             .container { padding: 0 20px; }
@@ -467,7 +305,20 @@
 </head>
 <body>
 
-    <!-- BOTÓ MENÚ HAMBURGUESA I BOTÓ PORTADA MINIMALISTA -->
+    <!-- ADS FUTURISTES -->
+    <div class="cyber-ad ad-left" onclick="alert('Enllaç HoloNet redirigint...')">
+        <img src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?auto=format&fit=crop&w=200&q=80" alt="Mart">
+        <h4>NeoMars Tours</h4>
+        <p>Fart del fred orbital? Reserva el teu viatge a les cúpules tropicals de Mart. Des de 5.000 Crèdits.</p>
+    </div>
+
+    <div class="cyber-ad ad-right" onclick="alert('Connexió Neural Establerta...')">
+        <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?auto=format&fit=crop&w=200&q=80" alt="Cyber Implant">
+        <h4>NeuroLink v8.2</h4>
+        <p>Connexió directa al servidor làser LEO. Descarrega coneixements mentre dorms. Ara sense mal de cap.</p>
+    </div>
+
+    <!-- BOTONS CAPÇALERA -->
     <button id="menu-toggle" aria-label="Obrir menú" onclick="toggleMenu()">☰</button>
     <button id="home-btn" aria-label="Anar a la portada" title="Anar a la portada" onclick="showSection('home')">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -487,9 +338,14 @@
             <li><a data-target="article3" onclick="showSection('article3')">Desconnexió Terrestre</a></li>
             <li><a data-target="article4" onclick="showSection('article4')">Mecànics a Gravetat Zero</a></li>
         </ul>
+        <h3>Legal</h3>
+        <ul>
+            <li><a data-target="qui-som" onclick="showSection('qui-som')">Qui som</a></li>
+            <li><a data-target="contacte" onclick="showSection('contacte')">Contacte</a></li>
+        </ul>
     </nav>
 
-    <!-- BARRA DE PROGRÉS (DRETA) AMB PERCENTATGE -->
+    <!-- BARRA DE PROGRÉS (DRETA) -->
     <div id="progress-container">
         <div id="progress-text">0%</div>
         <div id="progress-bar"></div>
@@ -503,7 +359,7 @@
     <div class="container">
         <main class="content">
             
-            <!-- PORTADA DIARI -->
+            <!-- PORTADA -->
             <section id="home" class="content-section active">
                 <div class="home-grid">
                     <article class="hero-article">
@@ -548,10 +404,17 @@
                     <h2>La Gran Crisi del 2032: Quan el refredament dels servidors consumia més aigua que l'agricultura mundial.</h2>
                     <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80" alt="Servidors sobreescalfats">
                     <span class="image-caption">Imatge d'arxiu d'un macro-centre de dades terrestre durant els episodis de sobreescalfament pre-crisi.</span>
-                    <p>L'any 2032, la societat digital va xocar de front amb la realitat biològica del planeta. El consum excessiu dels centres de dades terrestres va arribar al seu punt de no retorn. Ja la dècada anterior s'havien vist els primers senyals d'alerta: l'any 2025 el Regne Unit va arribar a demanar a la població que esborrés correus electrònics per estalviar aigua durant una greu sequera. No obstant això, el veritable col·lapse trigaria uns anys més a esclatar. Impulsats per l'entrenament massiu de models d'Intel·ligència Artificial i la digitalització total, els "núvols" -que la gent va descobrir que de núvols no en tenien res - es van convertir en forats negres de recursos.</p>
-                    <p>L'any 2032, l'aigua dolça purificada necessària per als complexos sistemes de refrigeració líquida va superar el consum hídric de tota l'agricultura mundial. Conques hidrogràfiques senceres s'esgotaven només per evitar que els servidors es fonguessin. Aquesta situació va generar una crisi social sense precedents. Les comunitats locals es van quedar sense aigua per als cultius i per al consum humà, mentre les grans corporacions tecnològiques mantenien actius els seus processos massius de dades. El mite de la tecnologia invisible i neta es va esfondrar definitivament.</p>
-                    <p>Va ser aquest escenari límit el que va forçar la indústria a prendre una decisió dràstica i mirar cap al cel. Si la Terra no podia suportar la calor i la set de la nostra activitat digital, la solució passava per l'òrbita baixa terrestre (LEO). La crisi del 2032 va ser el catalitzador que va iniciar l'èxode de les dades cap a l'espai, aprofitant el fred del buit còsmic i la llum solar ininterrompuda per tancar, per fi, l'aixeta a la Terra. Avui, al 2050, ho recordem com el moment en què gairebé morim d'èxit digital.</p>
+                    <p>L'any 2032, la societat digital va xocar de front amb la realitat biològica del planeta. El consum excessiu dels centres de dades terrestres va arribar al seu punt de no retorn. Ja la dècada anterior s'havien vist els primers senyals d'alerta: l'any 2025 el Regne Unit va arribar a demanar a la població que esborrés correus electrònics per estalviar aigua durant una greu sequera. No obstant això, el veritable col·lapse trigaria uns anys més a esclatar.</p>
+                    <p>L'any 2032, l'aigua dolça purificada necessària per als complexos sistemes de refrigeració líquida va superar el consum hídric de tota l'agricultura mundial. Conques hidrogràfiques senceres s'esgotaven només per evitar que els servidors es fonguessin. Aquesta situació va generar una crisi social sense precedents.</p>
+                    <p>Va ser aquest escenari límit el que va forçar la indústria a prendre una decisió dràstica i mirar cap al cel. Si la Terra no podia suportar la calor i la set de la nostra activitat digital, la solució passava per l'òrbita baixa terrestre (LEO). La crisi del 2032 va ser el catalitzador que va iniciar l'èxode de les dades cap a l'espai, aprofitant el fred del buit còsmic i la llum solar ininterrompuda.</p>
                     
+                    <!-- Compartir xarxes -->
+                    <div class="article-share">
+                        <strong>Transmetre a l'Holoxarxa:</strong> 
+                        <a href="#" aria-label="Compartir a X"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" aria-label="Compartir a Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+
                     <!-- Comentaris Article 1 -->
                     <div class="comments-section">
                         <h3>Comentaris (2)</h3>
@@ -586,25 +449,30 @@
                     <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80" alt="Planeta Terra des de l'espai">
                     <span class="image-caption">L'òrbita baixa terrestre (LEO) acull actualment la pràctica totalitat de la infraestructura de dades global.</span>
                     
-                    <p>L'any 2038 va marcar un abans i un després en les telecomunicacions. Davant del col·lapse energètic i la crisi hídrica del 2032, la posada en marxa del Projecte 'Òrbita Freda' va salvar l'ecosistema digital traslladant els centres de dades a l'òrbita baixa terrestre (LEO). La fita va requerir la formació d'un consorci inèdit format per l'Agència Espacial Europea (ESA), la NASA i els principals gegants tecnològics per dissenyar una infraestructura modular a escala planetària.</p>
+                    <p>L'any 2038 va marcar un abans i un després en les telecomunicacions. Davant del col·lapse energètic i la crisi hídrica del 2032, la posada en marxa del Projecte 'Òrbita Freda' va salvar l'ecosistema digital traslladant els centres de dades a l'òrbita baixa terrestre (LEO).</p>
                     
-                    <!-- Context real incorporat -->
                     <div class="real-references">
                         <h4>Nota Científica de l'Arxiu: Els orígens de la idea (2022)</h4>
-                        <p>Històricament, la viabilitat de posar centres de dades a l'espai ja es va plantejar de forma seriosa l'any 2022. La Comissió Europea va encarregar l'estudi <strong>ASCEND (Advanced Space Cloud for European Net zero emission and Data sovereignty)</strong> a Thales Alenia Space per estudiar si l'energia solar orbital (capaç de produir sense nits ni núvols) compensava la petjada de carboni dels llançaments de coets. Els estudis posteriors sobre viabilitat energètica i refrigeració passiva en el buit còsmic van establir la base científica per al Projecte Òrbita Freda.</p>
+                        <p>Històricament, la viabilitat de posar centres de dades a l'espai ja es va plantejar de forma seriosa l'any 2022. La Comissió Europea va encarregar l'estudi <strong>ASCEND (Advanced Space Cloud for European Net zero emission and Data sovereignty)</strong> a Thales Alenia Space per estudiar si l'energia solar orbital (capaç de produir sense nits ni núvols) compensava la petjada de carboni dels llançaments de coets.</p>
                     </div>
 
                     <p>Aquesta arquitectura històrica es va basar en tres pilars fonamentals que van canviar el paradigma tecnològic:</p>
                     
                     <ul>
-                        <li><strong>Energia solar contínua i potenciada:</strong> A l'espai, els panells fotovoltaics no pateixen el cicle dia/nit. Sense el filtre de l'aire terrestre, la captació d'energia és molt més eficient, garantint un subministrament net.</li>
-                        <li><strong>Refrigeració passiva:</strong> L'ambient gèlid del buit còsmic va permetre dissipar la calor directament mitjançant radiadors, eliminant l'ús criminal d'aigua dolça.</li>
-                        <li><strong>Transmissió Òptica Làser:</strong> L'absència de fricció atmosfèrica permet utilitzar xarxes làser d'alta freqüència entre els nodes orbitals i les estacions base, assolint velocitats immenses.</li>
+                        <li><strong>Energia solar contínua:</strong> A l'espai, els panells fotovoltaics no pateixen el cicle dia/nit. Sense el filtre de l'aire terrestre, la captació d'energia és molt més eficient.</li>
+                        <li><strong>Refrigeració passiva:</strong> L'ambient gèlid del buit còsmic va permetre dissipar la calor directament mitjançant radiadors.</li>
+                        <li><strong>Transmissió Òptica Làser:</strong> L'absència de fricció atmosfèrica permet utilitzar xarxes làser d'alta freqüència entre els nodes orbitals.</li>
                     </ul>
 
-                    <p>L'èxode no va estar exempt de dificultats. Durant gairebé una dècada, milers de llançaments de coets reutilitzables van transportar l'esquelet d'aquests macro-centres. Avui, l'any 2050, el "núvol" fa honor al seu nom i flota literalment sobre els nostres caps.</p>
+                    <p>Avui, l'any 2050, el "núvol" fa honor al seu nom i flota literalment sobre els nostres caps.</p>
                     
-                    <!-- Comentaris Article 2 -->
+                    <!-- Compartir xarxes -->
+                    <div class="article-share">
+                        <strong>Transmetre a l'Holoxarxa:</strong> 
+                        <a href="#" aria-label="Compartir a X"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" aria-label="Compartir a Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+
                     <div class="comments-section">
                         <h3>Comentaris (1)</h3>
                         <div class="comment">
@@ -628,12 +496,18 @@
             <section id="article3" class="content-section">
                 <article>
                     <h2>Fita històrica aquest 2050: Es desconnecta l'últim macro-centre de dades terrestre.</h2>
-                    <img src="https://image.pollinations.ai/prompt/abandoned%20dusty%20old%20terrestrial%20data%20center%20server%20room%20dark%20cinematic?width=1200&height=675&nologo=true" alt="Antic centre de dades terrestre abandonat">
+                    <img src="https://image.pollinations.ai/prompt/abandoned%20dusty%20old%20terrestrial%20data%20center%20server%20room%20dark%20cinematic?width=1200&height=675&nologo=true" alt="Antic centre de dades abandonat">
                     <span class="image-caption">Símbol de la fi d'una era: un antic macro-centre de dades terrestre, ara obsolet i desconnectat.</span>
-                    <p>Avui, el món tanca oficialment un capítol fosc de la seva història tecnològica. A les 12:00h s'ha apagat l'últim macro-centre de dades terrestre operatiu, posant fi a la migració de la xarxa global a l'òrbita baixa de la Terra (LEO). La transició ja és del 100%. Aquesta fita històrica culmina el procés de salvació ecològica iniciat després de les grans crisis hídriques i energètiques de la dècada dels 30. Enrere queden els temps on mantenir actiu el "núvol" significava sacrificar l'aigua dolça de poblacions senceres i disparar el consum elèctric global. Tot el pes de la Intel·ligència Artificial i l'emmagatzematge digital recau ara sobre la nostra constel·lació orbital.</p>
-                    <p>L'energia solar inesgotable i el fred absolut de l'espai han demostrat ser l'únic entorn viable per sostenir el nostre ritme tecnològic. Les antigues instal·lacions terrestres, avui obsoletes, començaran demà mateix el seu desmantellament per ser reconvertides en boscos i parcs nacionals. Un recordatori físic que la tecnologia només pot avançar si respecta els límits biològics del nostre planeta.</p>
+                    <p>Avui, el món tanca oficialment un capítol fosc de la seva història tecnològica. A les 12:00h s'ha apagat l'últim macro-centre de dades terrestre operatiu, posant fi a la migració de la xarxa global a l'òrbita baixa de la Terra (LEO). La transició ja és del 100%.</p>
+                    <p>L'energia solar inesgotable i el fred absolut de l'espai han demostrat ser l'únic entorn viable per sostenir el nostre ritme tecnològic. Les antigues instal·lacions terrestres, avui obsoletes, començaran demà mateix el seu desmantellament per ser reconvertides en boscos i parcs nacionals.</p>
                     
-                    <!-- Comentaris Article 3 -->
+                    <!-- Compartir xarxes -->
+                    <div class="article-share">
+                        <strong>Transmetre a l'Holoxarxa:</strong> 
+                        <a href="#" aria-label="Compartir a X"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" aria-label="Compartir a Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+
                     <div class="comments-section">
                         <h3>Comentaris (2)</h3>
                         <div class="comment">
@@ -664,34 +538,40 @@
             <section id="article4" class="content-section">
                 <article>
                     <h2>Mecànics de dades a gravetat zero: Un dia a la vida dels tècnics de manteniment orbital.</h2>
-                    <img src="https://image.pollinations.ai/prompt/female%20astronaut%20mechanic%20repairing%20server%20rack%20in%20space%20zero%20gravity%20cinematic?width=1200&height=675&nologo=true" alt="Tècnica astronauta reparant servidors a gravetat zero">
+                    <img src="https://image.pollinations.ai/prompt/female%20astronaut%20mechanic%20repairing%20server%20rack%20in%20space%20zero%20gravity%20cinematic?width=1200&height=675&nologo=true" alt="Tècnica astronauta reparant servidors">
                     <span class="image-caption">La Laia, tècnica de manteniment de l'EMO-3, fotografiada durant la nostra entrevista mentre operava.</span>
-                    <p>Són les 06:00 a l'Estació de Manteniment Orbital (EMO-3). La Laia es revisa l'arnès del seu vestit extravehicular abans de sortir per la resclosa. Ja no existeixen els terres falsos, els cables enredats ni els passadissos eixordadors plens d'aire condicionat dels antics centres de dades terrestres. Ara, el "passadís" on treballa és el buit gèlid de l'espai, i el silenci és absolut. Ser tècnic de sistemes l'any 2050 ja no implica lluitar contra la pols o els problemes de sobreescalfament. A 400 quilòmetres sobre la superfície de la Terra, la temperatura dels servidors s'autoregula gràcies al fred cosmic.</p>
-                    <p>La missió d'avui de la Laia i el seu equip és rutinària però vital: substituir tres mòduls d'emmagatzematge d'estat sòlid que s'han degradat a causa de la radiació solar i recalibrar un transmissor òptic làser que connecta el clúster del sud d'Europa amb el d'Amèrica. El treball és lent i metòdic. A gravetat zero, no pots deixar un tornavís sobre un servidor; qualsevol eina o component solt es pot convertir en un projectil letal per als immensos panells solars que alimenten la infraestructura. Cada eina està lligada magnèticament al vestit, i els tècnics es desplacen pel fuselatge exterior del macro-servidor amb moviments molt calculats, impulsant-se suaument amb petits raigs de gas comprimit.</p>
-                    <p>"El més difícil ja no és diagnosticar per què falla una placa base", comenta la Laia a través de l'enllaç de ràdio amb el centre de control terrestre. "El veritable repte és aconseguir canviar un xip mil·limètric amb guants de pressió, mentre intentes no distreure't mirant com passen els huracans sobre l'Atlàntic just sota els teus peus". Quan acaba el seu torn de vuit hores i torna a entrar a l'estació pressuritzada, deixa enrere milers de terabytes de dades fluint ininterrompudament cap a la Terra. Gràcies a "mecànics orbitals" com ella, la humanitat pot continuar entrenant models de llenguatge avançats, operant hospitals a distància i gestionant l'economia global sense gastar ni una sola gota d'aigua de les nostres reserves terrestres.</p>
+                    <p>Són les 06:00 a l'Estació de Manteniment Orbital (EMO-3). La Laia es revisa l'arnès del seu vestit extravehicular abans de sortir per la resclosa. Ara, el "passadís" on treballa és el buit gèlid de l'espai, i el silenci és absolut.</p>
+                    <p>La missió d'avui de la Laia i el seu equip és rutinària però vital: substituir tres mòduls d'emmagatzematge d'estat sòlid que s'han degradat a causa de la radiació solar i recalibrar un transmissor òptic làser. A gravetat zero, no pots deixar un tornavís sobre un servidor; qualsevol eina solta es pot convertir en un projectil letal.</p>
+                    <p>"El veritable repte és aconseguir canviar un xip mil·limètric amb guants de pressió, mentre intentes no distreure't mirant com passen els huracans sobre l'Atlàntic just sota els teus peus". Gràcies a "mecànics orbitals" com ella, la humanitat pot continuar gestionant l'economia global sense gastar aigua.</p>
                     
-                    <!-- Comentaris Article 4 -->
+                    <!-- Compartir xarxes -->
+                    <div class="article-share">
+                        <strong>Transmetre a l'Holoxarxa:</strong> 
+                        <a href="#" aria-label="Compartir a X"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" aria-label="Compartir a Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+
                     <div class="comments-section">
                         <h3>Comentaris (3)</h3>
                         <div class="comment">
                             <div class="comment-avatar">T</div>
                             <div class="comment-body">
                                 <div class="comment-author">Toni_SysAdmin</div>
-                                <p class="comment-text">Quina enveja! Jo soc un ex-tècnic de sistemes jubilat. Abans ens barallàvem amb l'aire condicionat dels racks a les 3 del matí. Això és un altre nivell.</p>
+                                <p class="comment-text">Quina enveja! Jo soc un ex-tècnic de sistemes jubilat. Això és un altre nivell.</p>
                             </div>
                         </div>
                         <div class="comment">
                             <div class="comment-avatar">A</div>
                             <div class="comment-body">
                                 <div class="comment-author">AstroGirl</div>
-                                <p class="comment-text">Quin orgull la Laia. M'encantaria estudiar l'especialització de Manteniment LEO a la universitat l'any vinent.</p>
+                                <p class="comment-text">Quin orgull la Laia. M'encantaria estudiar Manteniment LEO l'any vinent.</p>
                             </div>
                         </div>
                         <div class="comment">
                             <div class="comment-avatar">X</div>
                             <div class="comment-body">
                                 <div class="comment-author">Xavi_Orbital</div>
-                                <p class="comment-text">Treballar amb el buit sota els peus impresiona al principi, però us asseguro que t'hi acostumes. Salutacions des de l'EMO-5!</p>
+                                <p class="comment-text">Treballar amb el buit sota els peus impresiona al principi, però t'hi acostumes.</p>
                             </div>
                         </div>
                     </div>
@@ -701,6 +581,48 @@
                         <h3>Tornar a la Portada</h3>
                         <p>Repassa tots els continguts de l'edició especial de L'Èxode Digital.</p>
                     </div>
+                </article>
+            </section>
+
+            <!-- PÀGINES EXTRA -->
+            <section id="qui-som" class="content-section">
+                <article>
+                    <h2>Qui Som</h2>
+                    <p>Som "Cròniques de l'Òrbita Freda", un arxiu periodístic hologràfic mantingut per la Federació de Dades LEO. La nostra missió és preservar la memòria de l'Èxode Digital de la dècada dels 2030, quan la humanitat va entendre que l'única manera de salvar la biosfera terrestre era traslladar les seves ments digitals a les estrelles.</p>
+                    <p>Aquest dossier ha estat generat per IA i curat per historiadors orbitals humans l'any 2050.</p>
+                </article>
+            </section>
+
+            <section id="contacte" class="content-section">
+                <article>
+                    <h2>Contacte Orbital</h2>
+                    <p>Pots establir una connexió quàntica segura amb la nostra redacció central situada al Clúster Europeu EMO-4.</p>
+                    <ul>
+                        <li><strong>Freqüència de transmissió:</strong> 44.5 GHz (Xarxa Làser Estàndard)</li>
+                        <li><strong>Canal HoloNet:</strong> @CroniquesÒrbita</li>
+                        <li><strong>Adreça física:</strong> Mòdul Residencial 7, Sector Sud, Node Barcelona-LEO. (Les visites requereixen visat gravitacional).</li>
+                    </ul>
+                </article>
+            </section>
+
+            <section id="avis-legal" class="content-section">
+                <article>
+                    <h2>Avís Legal</h2>
+                    <p>Tot el contingut d'aquesta transmissió està regulat sota el Tractat de Dades Espacials de l'any 2042. Queda estrictament prohibida la descàrrega neural massiva d'aquests articles sense compensació de crèdits energètics. Qualsevol intent de hackejar la xarxa làser per modificar l'arxiu històric serà penalitzat amb la desconnexió temporal de la HoloNet.</p>
+                </article>
+            </section>
+
+            <section id="privacitat" class="content-section">
+                <article>
+                    <h2>Política de Privacitat Neural</h2>
+                    <p>Segons la Llei de Protecció de Dades de l'Òrbita (LPD-O 2048), garantim que els teus patrons de lectura ocular, els teus ritmes cardíacs mentre llegeixes els nostres articles i els teus pensaments subjacents no seran compartits amb corporacions sintètiques de tercers sense el teu consentiment explícit mitjançant parpelleig doble.</p>
+                </article>
+            </section>
+
+            <section id="galetes" class="content-section">
+                <article>
+                    <h2>Política de Nano-Galetes</h2>
+                    <p>Aquesta plataforma utilitza nano-galetes (nano-cookies) que se sincronitzen amb el teu implant cerebral o interfície ocular per mantenir la teva sessió de lectura activa fins i tot si perds connexió amb els satèl·lits de baixa altura. Aquestes nano-galetes s'autodestrueixen biològicament en 24 hores i no deixen residus de dades a la teva memòria a curt termini.</p>
                 </article>
             </section>
 
@@ -714,14 +636,14 @@
             <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
         </div>
         <div class="footer-links">
-            <a href="#">Qui som</a>
-            <a href="#">Contacte</a>
-            <a href="#">Avís Legal</a>
-            <a href="#">Política de Privacitat</a>
-            <a href="#">Política de Galetes</a>
+            <a onclick="showSection('qui-som')">Qui som</a>
+            <a onclick="showSection('contacte')">Contacte</a>
+            <a onclick="showSection('avis-legal')">Avís Legal</a>
+            <a onclick="showSection('privacitat')">Política de Privacitat</a>
+            <a onclick="showSection('galetes')">Política de Nano-Galetes</a>
         </div>
         <div class="footer-copyright">
-            &copy; 2050 L'Èxode Digital. Tots els drets reservats. Aquesta és una publicació de dossier històric.
+            &copy; 2050 L'Èxode Digital. Tots els drets reservats. Aquesta és una publicació de dossier històric orbital.
         </div>
     </footer>
 
@@ -752,8 +674,8 @@
             });
             document.getElementById(sectionId).classList.add('active');
             
-            document.querySelectorAll('.side-menu a').forEach(function(link) {
-                if(link.getAttribute('data-target') === sectionId) {
+            document.querySelectorAll('.side-menu a, .footer-links a').forEach(function(link) {
+                if(link.getAttribute('data-target') === sectionId || link.getAttribute('onclick').includes(sectionId)) {
                     link.classList.add('active-link');
                 } else {
                     link.classList.remove('active-link');
@@ -763,7 +685,7 @@
             document.getElementById('side-menu').classList.remove('open');
             
             const progressContainer = document.getElementById('progress-container');
-            if(sectionId === 'home') {
+            if(sectionId === 'home' || sectionId === 'qui-som' || sectionId === 'contacte' || sectionId === 'avis-legal' || sectionId === 'privacitat' || sectionId === 'galetes') {
                 progressContainer.style.display = 'none';
             } else {
                 progressContainer.style.display = 'block';
