@@ -228,8 +228,13 @@
             cursor: pointer;
             transition: background-color 0.2s;
         }
+        .newspaper-ad.ad-left {
+            float: left;
+            margin: 10px 30px 20px 0;
+        }
         .newspaper-ad:hover { background-color: #f0f0f0; }
         .newspaper-ad span.ad-label { display: block; font-size: 0.7rem; color: var(--text-muted); text-align: right; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;}
+        .newspaper-ad.ad-left span.ad-label { text-align: left; }
         .newspaper-ad h4 { font-size: 1.1rem; margin: 0 0 10px 0; font-family: var(--font-serif); color: var(--accent-color); text-transform: uppercase;}
         .newspaper-ad p { font-size: 0.9rem; margin: 0; line-height: 1.4; color: var(--text-muted); }
         .newspaper-ad img { width: 100%; height: auto; margin-bottom: 10px; filter: grayscale(80%); border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
@@ -320,6 +325,7 @@
             .top-nav-buttons { top: 15px; left: 15px; gap: 15px; }
             header h1 { font-size: 2.5rem; }
             .newspaper-ad { float: none; width: 100%; margin: 20px 0; }
+            .newspaper-ad.ad-left { float: none; margin: 20px 0; }
             .comment { flex-direction: column; }
             .comment-avatar { margin-bottom: 10px; }
             .action-strip { justify-content: center; }
@@ -423,7 +429,7 @@
                     
                     <p>L'any 2032, la societat digital va xocar de front amb la realitat biològica del planeta. El consum excessiu dels centres de dades terrestres va arribar al seu punt de no retorn. Ja la dècada anterior s'havien vist els primers senyals d'alerta: l'any 2025 el Regne Unit va arribar a demanar a la població que esborrés correus electrònics per estalviar aigua durant una greu sequera. No obstant això, el veritable col·lapse trigaria uns anys més a esclatar, originat per la "Guerra de les IA" on les corporacions competien entrenant models de milions de paràmetres diaris.</p>
                     
-                    <!-- Publicitat Article 1 -->
+                    <!-- Publicitat Article 1 - Dreta -->
                     <div class="newspaper-ad" onclick="alert('Redirigint a la plataforma del patrocinador...')">
                         <span class="ad-label">Publicitat Patrocinada</span>
                         <img src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?auto=format&fit=crop&w=250&q=80" alt="Mart">
@@ -432,6 +438,14 @@
                     </div>
 
                     <p>La "Gran Sequera del 29" va ser l'avantsala del desastre. Aquell any, zones senceres conegudes per la seva indústria tecnològica, com l'antic Silicon Valley o el corredor de servidors de Frankfurt, van patir apagades controlades, no per falta de llum, sinó perquè els embassaments que alimentaven els seus circuits de refrigeració líquida havien tocat fons. L'aigua dolça purificada, essencial per evitar que els processadors quàntics es fonguessin literalment, s'havia convertit en un recurs més valuós que el propi petroli en el segle anterior.</p>
+
+                    <!-- Publicitat Article 1 - Esquerra -->
+                    <div class="newspaper-ad ad-left" onclick="alert('Activació d\'encriptació quàntica...')">
+                        <span class="ad-label">Seguretat Corporativa</span>
+                        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=250&q=80" alt="Aegis AI">
+                        <h4>Escut Q-VPN</h4>
+                        <p>L'única VPN que utilitza entrellaçament quàntic real per evitar el rastreig de les IAs corporatives. Sigues un fantasma a la HoloNet.</p>
+                    </div>
 
                     <p>L'any 2032 es va registrar el rècord nefast: el refredament dels servidors va superar el consum hídric de tota l'agricultura mundial. Això va provocar l'emissió de la Llei de Prioritat Hídrica per part de les Nacions Unides, tallant el subministrament a les megacorporacions i obligant-les a buscar solucions extremes. Va ser aquest escenari límit el que va forçar la indústria a mirar cap al cel. Si la Terra no podia suportar la calor i la set de la nostra activitat digital, la solució passava per l'òrbita baixa terrestre (LEO). Un èxode històric estava a punt de començar.</p>
                     
@@ -490,7 +504,7 @@
                         <p>Històricament, la viabilitat de posar centres de dades a l'espai ja es va plantejar de forma seriosa l'any 2022. La Comissió Europea va encarregar l'estudi <strong>ASCEND (Advanced Space Cloud for European Net zero emission and Data sovereignty)</strong> a Thales Alenia Space per estudiar si l'energia solar orbital compensava la petjada de carboni dels llançaments de coets.</p>
                     </div>
 
-                    <!-- Publicitat Article 2 (Just sota de la nota científica) -->
+                    <!-- Publicitat Article 2 - Dreta -->
                     <div class="newspaper-ad" onclick="alert('Connexió Neural Establerta...')">
                         <span class="ad-label">Avanços Tecnològics</span>
                         <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?auto=format&fit=crop&w=250&q=80" alt="Cyber Implant">
@@ -500,6 +514,14 @@
 
                     <p>Aquesta arquitectura històrica es va basar en tres pilars fonamentals que van canviar el paradigma tecnològic. En primer lloc, la captació d'energia: a l'espai, els panells fotovoltaics no pateixen el cicle dia/nit ni l'atenuació atmosfèrica. Això proporcionava una font contínua i exponencialment superior de gigawatts, un requisit absolut per mantenir l'operativitat de la IA General desenvolupada a finals de la dècada de 2040.</p>
                     
+                    <!-- Publicitat Article 2 - Esquerra -->
+                    <div class="newspaper-ad ad-left" onclick="alert('Lloguer reservat...')">
+                        <span class="ad-label">Transport Cívic</span>
+                        <img src="https://images.unsplash.com/photo-1541888087569-42b4742f36ce?auto=format&fit=crop&w=250&q=80" alt="Hover Car">
+                        <h4>Aero-Rent 2050</h4>
+                        <p>Necessites arribar ràpid a l'estació de llançament? Lloga els nostres Aero-Cars amb conducció automàtica d'última generació.</p>
+                    </div>
+
                     <p>El segon gran avantatge era la refrigeració passiva. L'ambient del buit còsmic, proper al zero absolut, va permetre dissenyar radiadors de grafè i nanotubes de carboni que dissipaven la calor dels nuclis processadors de manera natural. Finalment, l'ús de Transmissió Òptica Làser en absència de fricció atmosfèrica va suposar connexions de latència gairebé zero entre els satèl·lits de la xarxa, deixant els antics cables submarins com simples relíquies del passat. La humanitat havia donat el gran salt per salvar-se a si mateixa del seu propi consum.</p>
                     
                     <!-- Tira d'accions -->
@@ -545,7 +567,7 @@
                     
                     <p>Avui, a les 12:00h UTC, el món tanca oficialment un capítol fosc i de predació energètica de la seva història tecnològica. L'últim macro-centre de dades terrestre operatiu, situat als Monegres, ha estat formalment desconnectat de la xarxa elèctrica. Amb l'apagat de l'últim llum verd d'aquest bunker d'acer i silici, es posa fi a la migració de la xarxa global a l'òrbita baixa de la Terra (LEO). La transició històrica ja és oficialment del 100%.</p>
                     
-                    <!-- Publicitat Article 3 amb Imatge Correcta d'Unsplash -->
+                    <!-- Publicitat Article 3 - Dreta -->
                     <div class="newspaper-ad" onclick="alert('Demana la teva prova gratuïta...')">
                         <span class="ad-label">Nutrició Domèstica</span>
                         <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=250&q=80" alt="Syntho-Meat">
@@ -555,6 +577,14 @@
 
                     <p>Aquesta fita històrica culmina el procés de salvació ecològica iniciat després de les grans crisis hídriques i energètiques de la dècada dels 30. Enrere queden els temps on mantenir actiu el "núvol" significava sacrificar l'aigua dolça de poblacions senceres, reduir cabals de rius a pràcticament res, i disparar el consum elèctric global fins a límits insostenibles que amenaçaven l'Acord de París. Ara, tot el pes computacional de la Intel·ligència Artificial global recau sobre la nostra constel·lació orbital.</p>
                     
+                    <!-- Publicitat Article 3 - Esquerra -->
+                    <div class="newspaper-ad ad-left" onclick="alert('Contactant el teu assistent legal...')">
+                        <span class="ad-label">Assessorament</span>
+                        <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=250&q=80" alt="Robo Lawyer">
+                        <h4>LexBot Pro 3.0</h4>
+                        <p>Un plet interplanetari? Contracta el nostre algoritme legal guanyador. Analitza 10.000 lleis per segon. Sense honoraris ocults.</p>
+                    </div>
+
                     <p>El silenci que ha inundat la sala de servidors abandonada era gairebé eixordador, acostumats com estàvem al ronc constant dels potents ventiladors industrials. D'acord amb el Pacte de Regeneració de 2045, aquestes antigues instal·lacions terrestres començaran demà mateix el seu desmantellament controlat per ser reconvertides en extensions de parcs nacionals i reserves d'aigua. Un recordatori físic i permanent que la tecnologia només pot avançar si aprèn a respectar i integrar-se en els límits biològics del nostre planeta amfitrió.</p>
                     
                     <!-- Tira d'accions -->
@@ -607,7 +637,7 @@
                     
                     <p>Són les 06:00 a l'Estació de Manteniment Orbital (EMO-3). La Laia revisa minuciosament l'arnès magnètic del seu vestit extravehicular abans de sortir per la resclosa. Ja no existeixen els terres falsos de rajoles, els cables enredats sota terra ni els passadissos eixordadors plens d'aire condicionat dels antics centres terrestres. Ara, el "passadís" on treballa és el buit absolut, gèlid i perillós de l'espai.</p>
                     
-                    <!-- Publicitat Article 4 -->
+                    <!-- Publicitat Article 4 - Dreta -->
                     <div class="newspaper-ad" onclick="alert('Comprant beuratge...')">
                         <span class="ad-label">Refresc Galàctic</span>
                         <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=250&q=80" alt="Zero-G Cola">
@@ -617,6 +647,14 @@
 
                     <p>La missió d'avui de la Laia i el seu company de torn és aparentment rutinària, però a 400 km d'altitud res és trivial. Han de substituir tres mòduls d'emmagatzematge d'estat sòlid quàntic que s'han degradat prematurament per l'impacte d'una forta tempesta solar, i recalibrar manualment un transmissor òptic làser de 100 terabits. A gravetat zero, el protocol ho és tot. No pots deixar un tornavís sobre un servidor ni un instant; qualsevol eina solta es pot convertir en un projectil letal per als delicats panells solars si s'escapa impulsada pel més mínim toc.</p>
                     
+                    <!-- Publicitat Article 4 - Esquerra -->
+                    <div class="newspaper-ad ad-left" onclick="alert('Obrint configuració de privacitat...')">
+                        <span class="ad-label">Protecció Personal</span>
+                        <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=250&q=80" alt="Mind Shield">
+                        <h4>Visor Cognitiu Block+</h4>
+                        <p>La publicitat s'insereix en els teus somnis? El nostre visor bloqueja freqüències intrusives al teu còrtex mentre dorms. Només 399Cr.</p>
+                    </div>
+
                     <p>"El veritable repte ja no és el manteniment en si, els equips són molt robustos", comenta la Laia per ràdio mentre manipula uns ancoratges. "El problema és fer moviments mil·limètrics amb guants pressuritzats, suportar els canvis extrems de llum i foscor cada 90 minuts, i tot això mentre intentes no distreure't mirant com un huracà impressionant creua l'Atlàntic just sota les teves botes". Passar sis mesos en rotació a l'EMO-3 exigeix un peatge físic, però la camaraderia de la tripulació i la consciència del seu propòsit ho compensa. Gràcies a "mecànics orbitals" com ella, la humanitat pot continuar funcionant i gestionant l'economia global sense assecar el planeta.</p>
                     
                     <!-- Tira d'accions -->
@@ -671,14 +709,6 @@
             <section id="qui-som" class="content-section">
                 <article>
                     <h2>Qui Som</h2>
-                    <!-- Publicitat Qui Som -->
-                    <div class="newspaper-ad" onclick="alert('Activació d\'encriptació quàntica...')">
-                        <span class="ad-label">Seguretat Corporativa</span>
-                        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=250&q=80" alt="Aegis AI">
-                        <h4>Escut Q-VPN</h4>
-                        <p>L'única VPN que utilitza entrellaçament quàntic real per evitar el rastreig de les IAs corporatives. Sigues un fantasma a la HoloNet.</p>
-                    </div>
-
                     <p>Som "Cròniques de l'Òrbita Freda", un arxiu periodístic hologràfic mantingut permanentment per la Federació de Dades LEO. La nostra missió fundacional és preservar la memòria de l'Èxode Digital de la dècada dels 2030, quan la humanitat va entendre que l'única manera de salvar la biosfera terrestre era traslladar les seves ments digitals a les estrelles.</p>
                     
                     <p>Mentre molts mitjans van oblidar el cost d'aquella època, nosaltres documentem les conseqüències, les tecnologies i els herois anònims (enginyers, mecànics, pilots) que van permetre establir les estructures orbitals que avui tots donem per fet. Aquest dossier ha estat elaborat a partir d'arxius fragmentats de l'antiga internet terrestre, regenerat gràcies als algorismes de recuperació històrica i curat per historiadors orbitals l'any 2050.</p>
@@ -688,14 +718,6 @@
             <section id="contacte" class="content-section">
                 <article>
                     <h2>Contacte Orbital</h2>
-                    <!-- Publicitat Contacte -->
-                    <div class="newspaper-ad" onclick="alert('Lloguer reservat...')">
-                        <span class="ad-label">Transport Cívic</span>
-                        <img src="https://images.unsplash.com/photo-1541888087569-42b4742f36ce?auto=format&fit=crop&w=250&q=80" alt="Hover Car">
-                        <h4>Aero-Rent 2050</h4>
-                        <p>Necessites arribar ràpid a l'estació de llançament? Lloga els nostres Aero-Cars amb conducció automàtica d'última generació.</p>
-                    </div>
-
                     <p>Pots establir una connexió quàntica segura amb la nostra redacció central, actualment rotant en la secció comercial del Clúster Europeu EMO-4. Estem oberts a col·laboracions, recuperacions d'arxius privats o simplement per debatre l'impacte històric del projecte.</p>
                     
                     <ul>
@@ -710,14 +732,6 @@
             <section id="avis-legal" class="content-section">
                 <article>
                     <h2>Avís Legal</h2>
-                    <!-- Publicitat Avís Legal -->
-                    <div class="newspaper-ad" onclick="alert('Contactant el teu assistent legal...')">
-                        <span class="ad-label">Assessorament</span>
-                        <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=250&q=80" alt="Robo Lawyer">
-                        <h4>LexBot Pro 3.0</h4>
-                        <p>Un plet interplanetari? Contracta el nostre algoritme legal guanyador. Analitza 10.000 lleis per segon. Sense honoraris ocults.</p>
-                    </div>
-
                     <p>Tot el contingut textual, gràfic i hologràfic d'aquesta transmissió està estrictament regulat sota el Tractat de Dades Espacials de l'any 2042 signat a l'Assemblea de Ginebra-Orbital. Els drets de memòria digital pertanyen exclusivament a l'Arxiu de l'Èxode.</p>
                     
                     <p>Queda terminantment prohibida la descàrrega neural massiva o la clonació mitjançant IA d'aquests articles sense la compensació adequada en crèdits energètics. Qualsevol intent de hackejar la infraestructura de la xarxa làser local per alterar els documents històrics o manipular la visió del passat serà rastrejat a través dels seus identificadors neurals i comportarà la desconnexió temporal immediata de la HoloNet pública.</p>
@@ -727,14 +741,6 @@
             <section id="privacitat" class="content-section">
                 <article>
                     <h2>Política de Privacitat Neural</h2>
-                    <!-- Publicitat Privacitat -->
-                    <div class="newspaper-ad" onclick="alert('Obrint configuració de privacitat...')">
-                        <span class="ad-label">Protecció Personal</span>
-                        <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=250&q=80" alt="Mind Shield">
-                        <h4>Visor Cognitiu Block+</h4>
-                        <p>La publicitat s'insereix en els teus somnis? El nostre visor bloqueja freqüències intrusives al teu còrtex mentre dorms. Només 399Cr.</p>
-                    </div>
-
                     <p>La vostra integritat cerebral és la nostra màxima prioritat. Segons dictamina la rigorosa Llei de Protecció de Dades de l'Òrbita (LPD-O actualització 2048), la nostra xarxa opera amb transparència cognitiva total.</p>
                     
                     <p>Garantim fermament que els teus patrons de lectura ocular, els teus ritmes cardíacs derivats dels sensors biomètrics mentre llegeixes els nostres articles, i, especialment, els teus pensaments subjacents captats en segon pla pel teu implant de connexió, NO seran recopilats, processats ni compartits amb corporacions sintètiques de tercers sense el teu consentiment absolutament explícit (confirmat mitjançant parpelleig doble seqüencial o confirmació de pols voluntari).</p>
@@ -744,14 +750,6 @@
             <section id="galetes" class="content-section">
                 <article>
                     <h2>Política de Nano-Galetes</h2>
-                    <!-- Publicitat Galetes -->
-                    <div class="newspaper-ad" onclick="alert('Enviant comanda a l\'impressora d\'aliments...')">
-                        <span class="ad-label">Gastronomia Retro</span>
-                        <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=250&q=80" alt="Real Cookies">
-                        <h4>Galetes 'Terra Vella'</h4>
-                        <p>Torna al passat. Elaborades amb cacau sintètic d'alta qualitat que simula la xocolata de l'any 2010. Fes cruixir el sabor clàssic avui.</p>
-                    </div>
-
                     <p>No parlem d'aliments impresos en 3D, sinó de traçabilitat de dades de nova generació. Aquesta plataforma utilitza de forma responsable les denominades 'nano-galetes' (tecnologia descendent de les antigues 'cookies' de la web 2.0).</p>
                     
                     <p>Aquestes seqüències temporals de codi se sincronitzen harmònicament amb el teu implant cerebral de navegació o la teva interfície ocular per mantenir la teva sessió de lectura activa i el teu progrés guardat de forma ininterrompuda, fins i tot en el cas que pateixis una pèrdua temporal de connexió provocada per micro-meteorits interferint amb els satèl·lits locals. Les nostres nano-galetes s'autodestrueixen biològicament i de forma neta en un màxim de 24 hores, garantint que no es deixaran residus de dades corruptes a la teva memòria a curt termini.</p>
