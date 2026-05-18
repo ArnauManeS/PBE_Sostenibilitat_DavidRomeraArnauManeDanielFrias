@@ -28,35 +28,41 @@
             overflow-x: hidden;
         }
 
-        /* Botons capçalera */
-        #menu-toggle {
+        /* Botons capçalera alineats */
+        .top-nav-buttons {
             position: fixed;
             top: 25px;
             left: 20px;
-            background: none;
-            border: none;
-            font-size: 2rem;
-            color: var(--text-main);
-            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 20px;
             z-index: 1001;
-            transition: color 0.2s;
         }
-        #menu-toggle:hover { color: var(--accent-hover); }
-
-        #home-btn {
-            position: fixed;
-            top: 31px;
-            left: 70px;
+        
+        #menu-toggle, #home-btn {
             background: none;
             border: none;
             color: var(--text-main);
             cursor: pointer;
-            z-index: 1001;
             transition: color 0.2s;
             display: flex;
             align-items: center;
+            padding: 0;
+            margin: 0;
         }
-        #home-btn:hover { color: var(--accent-hover); }
+
+        #menu-toggle {
+            font-size: 2rem;
+            line-height: 1;
+        }
+
+        #home-btn {
+            color: var(--text-main);
+        }
+
+        #menu-toggle:hover, #home-btn:hover { 
+            color: var(--accent-hover); 
+        }
 
         /* Menú Lateral */
         .side-menu {
@@ -273,20 +279,25 @@
         .comment-author { font-weight: bold; margin-bottom: 5px; font-size: 0.95rem; color: var(--text-main); }
         .comment-text { font-size: 0.95rem; color: var(--text-muted); margin: 0; }
 
-        /* Resum del següent article */
-        .next-article-box {
+        /* Navegació entre articles */
+        .article-navigation {
+            display: flex;
+            gap: 20px;
             margin-top: 40px;
+            clear: both;
+        }
+        .nav-box {
+            flex: 1;
             padding: 20px;
             background-color: #f4f4f4;
             border-left: 4px solid var(--accent-color);
             cursor: pointer;
             transition: background-color 0.2s;
-            clear: both;
         }
-        .next-article-box:hover { background-color: #e9e9e9; }
-        .next-article-box h4 { margin: 0 0 10px 0; font-family: var(--font-sans); color: var(--accent-color); text-transform: uppercase; font-size: 0.85rem; }
-        .next-article-box h3 { margin: 0 0 10px 0; font-size: 1.5rem; color: var(--text-main); }
-        .next-article-box p { font-size: 1rem; margin: 0; color: var(--text-muted); font-family: var(--font-serif); }
+        .nav-box:hover { background-color: #e9e9e9; }
+        .nav-box h4 { margin: 0 0 10px 0; font-family: var(--font-sans); color: var(--accent-color); text-transform: uppercase; font-size: 0.85rem; }
+        .nav-box h3 { margin: 0 0 10px 0; font-size: 1.2rem; color: var(--text-main); }
+        .nav-box p { font-size: 0.9rem; margin: 0; color: var(--text-muted); font-family: var(--font-serif); }
 
         /* Peu de Pàgina */
         footer {
@@ -306,26 +317,28 @@
 
         @media (max-width: 768px) {
             .container { padding: 0 20px; }
-            #menu-toggle { top: 15px; left: 15px; }
-            #home-btn { top: 21px; left: 60px; }
+            .top-nav-buttons { top: 15px; left: 15px; gap: 15px; }
             header h1 { font-size: 2.5rem; }
             .newspaper-ad { float: none; width: 100%; margin: 20px 0; }
             .comment { flex-direction: column; }
             .comment-avatar { margin-bottom: 10px; }
             .action-strip { justify-content: center; }
+            .article-navigation { flex-direction: column; }
         }
     </style>
 </head>
 <body>
 
     <!-- BOTONS CAPÇALERA -->
-    <button id="menu-toggle" aria-label="Obrir menú" onclick="toggleMenu()">☰</button>
-    <button id="home-btn" aria-label="Anar a la portada" title="Anar a la portada" onclick="showSection('home')">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-            <polyline points="9 22 9 12 15 12 15 22"></polyline>
-        </svg>
-    </button>
+    <div class="top-nav-buttons">
+        <button id="menu-toggle" aria-label="Obrir menú" onclick="toggleMenu()">☰</button>
+        <button id="home-btn" aria-label="Anar a la portada" title="Anar a la portada" onclick="showSection('home')">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+        </button>
+    </div>
 
     <!-- MENÚ LATERAL OCULT -->
     <nav id="side-menu" class="side-menu">
@@ -448,10 +461,17 @@
                         </div>
                     </div>
 
-                    <div class="next-article-box" onclick="showSection('article2')">
-                        <h4>Següent Article</h4>
-                        <h3>Projecte 'Òrbita Freda'</h3>
-                        <p>Descobreix com l'energia solar contínua i el zero absolut de l'espai van salvar la nostra xarxa.</p>
+                    <div class="article-navigation">
+                        <div class="nav-box" onclick="showSection('home')">
+                            <h4>Anterior</h4>
+                            <h3>Portada</h3>
+                            <p>Tornar a l'inici de l'edició especial.</p>
+                        </div>
+                        <div class="nav-box" onclick="showSection('article2')" style="text-align:right; border-left:none; border-right: 4px solid var(--accent-color);">
+                            <h4>Següent Article</h4>
+                            <h3>Projecte 'Òrbita Freda'</h3>
+                            <p>Com l'energia solar contínua i el buit van salvar la xarxa.</p>
+                        </div>
                     </div>
                 </article>
             </section>
@@ -465,17 +485,17 @@
                     
                     <p>L'any 2038 va marcar un abans i un després en les telecomunicacions i l'ecologia planetària. Davant del col·lapse energètic i la crisi hídrica del 2032, la posada en marxa del Projecte 'Òrbita Freda' va salvar l'ecosistema digital traslladant massivament els centres de dades a l'òrbita baixa terrestre (LEO).</p>
                     
-                    <!-- Publicitat Article 2 -->
+                    <div class="real-references">
+                        <h4>Nota Científica de l'Arxiu: Els orígens de la idea (2022)</h4>
+                        <p>Històricament, la viabilitat de posar centres de dades a l'espai ja es va plantejar de forma seriosa l'any 2022. La Comissió Europea va encarregar l'estudi <strong>ASCEND (Advanced Space Cloud for European Net zero emission and Data sovereignty)</strong> a Thales Alenia Space per estudiar si l'energia solar orbital compensava la petjada de carboni dels llançaments de coets.</p>
+                    </div>
+
+                    <!-- Publicitat Article 2 (Just sota de la nota científica) -->
                     <div class="newspaper-ad" onclick="alert('Connexió Neural Establerta...')">
                         <span class="ad-label">Avanços Tecnològics</span>
                         <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?auto=format&fit=crop&w=250&q=80" alt="Cyber Implant">
                         <h4>NeuroLink v8.2</h4>
                         <p>Connexió directa al servidor làser LEO. Descarrega coneixements mentre dorms. Ara amb filtres contra el soroll quàntic.</p>
-                    </div>
-
-                    <div class="real-references">
-                        <h4>Nota Científica de l'Arxiu: Els orígens de la idea (2022)</h4>
-                        <p>Històricament, la viabilitat de posar centres de dades a l'espai ja es va plantejar de forma seriosa l'any 2022. La Comissió Europea va encarregar l'estudi <strong>ASCEND (Advanced Space Cloud for European Net zero emission and Data sovereignty)</strong> a Thales Alenia Space per estudiar si l'energia solar orbital compensava la petjada de carboni dels llançaments de coets.</p>
                     </div>
 
                     <p>Aquesta arquitectura històrica es va basar en tres pilars fonamentals que van canviar el paradigma tecnològic. En primer lloc, la captació d'energia: a l'espai, els panells fotovoltaics no pateixen el cicle dia/nit ni l'atenuació atmosfèrica. Això proporcionava una font contínua i exponencialment superior de gigawatts, un requisit absolut per mantenir l'operativitat de la IA General desenvolupada a finals de la dècada de 2040.</p>
@@ -501,10 +521,17 @@
                         </div>
                     </div>
 
-                    <div class="next-article-box" onclick="showSection('article3')">
-                        <h4>Següent Article</h4>
-                        <h3>Fita històrica: Es desconnecta l'últim macro-centre terrestre</h3>
-                        <p>Viu el moment simbòlic en què s'apaguen definitivament els servidors de Terra.</p>
+                    <div class="article-navigation">
+                        <div class="nav-box" onclick="showSection('article1')">
+                            <h4>Anterior Article</h4>
+                            <h3>La Gran Crisi del 2032</h3>
+                            <p>Quan l'aigua dolça es va esgotar per culpa dels servidors.</p>
+                        </div>
+                        <div class="nav-box" onclick="showSection('article3')" style="text-align:right; border-left:none; border-right: 4px solid var(--accent-color);">
+                            <h4>Següent Article</h4>
+                            <h3>Desconnexió Terrestre</h3>
+                            <p>El moment simbòlic en què s'apaguen els darrers servidors.</p>
+                        </div>
                     </div>
                 </article>
             </section>
@@ -556,10 +583,17 @@
                         </div>
                     </div>
 
-                    <div class="next-article-box" onclick="showSection('article4')">
-                        <h4>Següent Article</h4>
-                        <h3>Mecànics de dades a gravetat zero</h3>
-                        <p>Descobreix com és un dia en la vida de la Laia, una tècnica encarregada del manteniment orbital a 400 km d'altura.</p>
+                    <div class="article-navigation">
+                        <div class="nav-box" onclick="showSection('article2')">
+                            <h4>Anterior Article</h4>
+                            <h3>Projecte 'Òrbita Freda'</h3>
+                            <p>Com l'energia solar contínua i el zero absolut van canviar-ho tot.</p>
+                        </div>
+                        <div class="nav-box" onclick="showSection('article4')" style="text-align:right; border-left:none; border-right: 4px solid var(--accent-color);">
+                            <h4>Següent Article</h4>
+                            <h3>Mecànics a Gravetat Zero</h3>
+                            <p>Com és el dia a dia mantenint servidors a l'espai.</p>
+                        </div>
                     </div>
                 </article>
             </section>
@@ -618,10 +652,17 @@
                         </div>
                     </div>
 
-                    <div class="next-article-box" onclick="showSection('home')">
-                        <h4>Fi del Dossier</h4>
-                        <h3>Tornar a la Portada</h3>
-                        <p>Repassa tots els continguts de l'edició especial de L'Èxode Digital.</p>
+                    <div class="article-navigation">
+                        <div class="nav-box" onclick="showSection('article3')">
+                            <h4>Anterior Article</h4>
+                            <h3>Desconnexió Terrestre</h3>
+                            <p>El dia en què vam desconnectar l'últim servidor terrestre.</p>
+                        </div>
+                        <div class="nav-box" onclick="showSection('home')" style="text-align:right; border-left:none; border-right: 4px solid var(--accent-color);">
+                            <h4>Fi del Dossier</h4>
+                            <h3>Tornar a la Portada</h3>
+                            <p>Repassa tots els continguts de l'edició especial.</p>
+                        </div>
                     </div>
                 </article>
             </section>
